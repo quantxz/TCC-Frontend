@@ -7,7 +7,7 @@ class HomeFunctions {
         let postsBatch = [];
 
         for (let post of postsArray) {
-            this.renderPost(post); // Movido para antes da verificação do count
+            this.renderPost(post);
             postsBatch.push(post);
             count++;
             if (count % 35 === 0) {
@@ -33,8 +33,8 @@ class HomeFunctions {
         postElement.setAttribute('data-likes', data.likes || 0);
         const response = this.identifier.Identifier(data.content);
         let content = ''; // Inicialize content como uma string vazia
-    
-        if(response.type == "link" && response.image == "no") {
+
+        if (response.type == "link" && response.image == "no") {
             content = `<a href="${data.content}">${data.content}</a>`;
         } else if (response.type == "link" && response.image == "yes") {
             content = `<img src="${data.content}" alt="post ${data.title} image as content">`;
@@ -93,18 +93,13 @@ class HomeFunctions {
             </div>`;
         const postsContainer = document.querySelector('.posts');
         postsContainer.appendChild(postElement);
-
-       
-        const postOptionsHeader = document.querySelectorAll(".post-options-header");
-        postOptionsHeader.forEach(header => {
-            header.innerHTML += '<include src="./components/post-headers-options.html" type="import"></include>'
-        })
+        
         const postContentContainer = postElement.querySelector(".post-content");
 
         if (postContentContainer) {
             postContentContainer.innerHTML += content;
         }
-        // Reordenar os posts com base nos likes
+
         const allPosts = Array.from(postsContainer.querySelectorAll('.post'));
         const postLikesDiv = document.querySelectorAll('.post-likes');
         /*invertigar se nã9o tem a ver com o momento ou a hierarquia em que renderizo o metadata do item*/

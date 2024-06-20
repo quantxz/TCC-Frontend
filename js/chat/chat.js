@@ -6,11 +6,14 @@ const messagesDiv = document.querySelector(".messages");
 const { nickname } = JSON.parse(localStorage.getItem("userInfo"));
 const nick = nickname
 
-const socket = io("https://tcc-u2qf.onrender.com", {
+
+/*em produção https://tcc-u2qf.onrender.com */
+const socket = io("http://localhost:3000", {
     query: { roomName: room }
 }); 
 
 function render(data) {
+    debugger
     const message = document.createElement("div");
     message.className = "message";
 
@@ -52,6 +55,7 @@ const form = document.querySelector(".chatForm");
 //ta funcionando é só arrumar o backend pra chamarretornar o author tambemm
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const currentDate = new Date();
     const message = document.querySelector("#messageInput");
     const hours = currentDate.getHours();

@@ -60,6 +60,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         });
     }, 1000)
+
+
+    const includer = new Include();
+    const postOptionsHeader = document.querySelectorAll(".post-options-header");
+    postOptionsHeader.forEach(header => {
+        const include = document.createElement("include");
+        include.setAttribute("src", "./components/post-headers-options.html");
+        include.setAttribute("type", "import")
+        header.appendChild(include)
+    })
+    includer.ReadHTML("import");
+
 })
 
 
