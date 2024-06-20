@@ -113,12 +113,11 @@
     <include type="ExportScript">
         <script>
             const opts = document.querySelectorAll(".opts-treeDots");
-            const optsMenu = document.querySelector(".post-header-opts");
 
             opts.forEach(button => {
                 console.log(button)            
                 button.addEventListener("click", () => {
-
+                    const optsMenu = button.nextElementSibling;
                     optsMenu.id = optsMenu.id == "" ? "post-header-opts-active" : ""
                 })
             })
