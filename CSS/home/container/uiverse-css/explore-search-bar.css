@@ -3,13 +3,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffffa8;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     padding-left: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
     margin-bottom: 15px;
+    & input {
+        background-color: #ffffffa8;
+    }
 }
 
 .input {
@@ -18,7 +21,12 @@
     border: none;
     outline: none;
     font-size: 0.9em;
-    caret-color: rgb(255, 81, 0);
+    caret-color: rgb(0, 255, 157);
+    background-color: #ACAEB0 !important;
+}
+
+.input::placeholder {
+    color: #000;
 }
 
 .labelforsearch {
