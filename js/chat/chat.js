@@ -5,15 +5,14 @@ const user = localStorage.getItem("userNickname");
 const messagesDiv = document.querySelector(".messages");
 const { nickname } = JSON.parse(localStorage.getItem("userInfo"));
 const nick = nickname
-
+let messages = []
 
 /*em produção https://tcc-u2qf.onrender.com */
 const socket = io("http://localhost:3000", {
     query: { roomName: room }
-}); 
+});
 
 function render(data) {
-    debugger
     const message = document.createElement("div");
     message.className = "message";
 
@@ -35,7 +34,7 @@ function render(data) {
     nickname.className = "userInChatName"
     nickname.textContent = data.author
 
-    if(JSON.stringify(data.author) == JSON.stringify(nick)) {
+    if (JSON.stringify(data.author) == JSON.stringify(nick)) {
         message.id = "myMessage"
     }
 
@@ -68,8 +67,14 @@ form.addEventListener("submit", (e) => {
         content: message.value,
         hour: `${hours}:${minutes}:${seconds}`
     })
-    console.log(message)
 
+    const messageToArray = {
+        author: nickname,
+        room: room,
+        content: message.value,
+        hour: `${hours}:${minutes}:${seconds}`
+    }
+    messages.push(messageToArray)
 })
 
 
@@ -84,5 +89,18 @@ socket.on("message", (data) => {
         behavior: "smooth",
         top: messagesDiv.scrollHeight
     })
-    
+
 });
+
+// por algum motivo sempre que o save messages dispara, a pagina recarrega mas foda-se tem outras coisas pra arrumar
+let delay = 30 * 60 * 1000 // 30 minutos
+function sendMessageAfterDelay() {
+    try {
+        socket.emit("save messages", messages);
+        messages = []
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+setInterval(sendMessageAfterDelay(), delay)
