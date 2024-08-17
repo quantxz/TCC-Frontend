@@ -1,0 +1,412 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+body
+
+{
+    background-color: #0d1117;
+    font-family: 'poppins', sans-serif;
+}
+
+main 
+
+{
+    width: 100vw;
+    height: 100vh;
+}
+.Sectionpersonalizacao 
+
+{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.voltar .sair
+
+{
+    position: absolute;
+    top: 5%;
+    left: 40px;
+    background-color: rgb(197, 189, 189);
+    width: 70px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.personalizacao
+
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    background-color: transparent;
+    width: 50%;
+    height: 90%;
+    box-shadow: 1px 1px 1px 1px #A1C7FA;
+    border-radius: 5px;
+    background-color: #A1C7FA;  
+}
+
+
+
+/*BOTAO INICIO*/
+
+
+#profileImage
+
+{
+    position: absolute;
+    top: 10%;
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#uploadButton
+
+{
+    background-color: #007BFF; 
+    color: black;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 13rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;   
+}
+
+#uploadButton:hover 
+
+{
+    background-color: #0056b3; 
+    color: white; 
+    transform: translateY(-5px);
+    transition: all 1s;
+}
+
+img 
+
+{
+    position: absolute;
+    top: 10%;
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    
+    
+}
+
+#btn 
+
+{
+    background-color: #007BFF; 
+    color: black;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 13rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    
+}
+
+#btn:hover 
+
+{
+    background-color: #0056b3; 
+    color: white; 
+    transform: translateY(-5px);
+    transition: all 1s;
+}
+
+/*BOTAO FINAL*/
+
+/*BNT-EDITAR INICIO*/
+
+#btn-editar
+
+{
+    background-color: #007BFF; 
+    color: black;
+    border: none;
+    width: 13rem;
+    height: 3rem;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 60%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#btn-editar:hover {
+    background-color: #0056b3; 
+    color: white; 
+    transform: translateY(-5px);
+    transition: all 1s;
+}
+
+
+/*BNT-EDITAR FINAL*/
+
+.sectionTexto 
+
+{
+    width: 60%;
+    height: 100%;
+    margin-left: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.primeira
+
+{
+    background-color: transparent;
+    width: 80%;
+    height: 45%;
+    position: absolute;
+    top: 48px;
+    right: 15%;
+    box-shadow: 1px 1px 1px 1px #A1C7FA;
+    border-radius: 5px;
+    padding: 10px 40px;
+    background-color: #A1C7FA;
+   
+}
+
+.segunda
+
+{
+    position: absolute;
+    top: 55%;
+    right: 15%;
+    background-color: transparent;
+    width: 80%;
+    height: 40%;   
+    box-shadow: 1px 1px 1px 1px #A1C7FA;
+    border-radius: 5px; 
+    background-color: #A1C7FA;
+    
+}
+
+.primeira form
+
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    
+}
+.primeira label
+
+{
+    margin-bottom: 4px;
+    font-size: 12pt;
+    color: black;
+}
+
+.primeira input
+
+{
+    height: 30px;
+    border: 0;
+    padding: 10px;
+    outline: none;
+    margin-bottom: 20px;
+    transition:  all 0.5s ;
+    border-radius: 10px; 
+    border: 2px solid blue;
+    background-color: rgb(164, 162, 162);;
+    font-style: oblique;
+    font-size: 12pt;
+
+}
+
+.primeira input:focus
+
+{
+    transform: translateY(-2px);
+}
+
+.primeira textarea
+
+{
+    border: 0;
+    padding: 10px;
+    outline: none;
+    margin-bottom: 20px;
+    transition:  all 0.5s ;
+    border-radius: 10px; 
+    border: 2px solid blue;
+    background-color: rgb(164, 162, 162);
+    font-style: oblique;
+    font-size: 12pt;
+
+}
+
+.primeira textarea:focus
+
+{
+    transform: translateY(-2px)
+}
+
+.logo-principal 
+
+{
+    position: absolute;
+    top: 63%;
+
+}
+
+.FotoUsuario 
+
+{
+    position: absolute;
+    top: 10%;
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+
+.navbar 
+
+{
+    background-color: #0d1117;
+    padding: 10px 0;
+}
+
+.navbar ul 
+
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li 
+
+{
+    margin: 0 20px;
+
+}
+
+.navbar ul li a 
+
+{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+.navbar ul li a .count
+
+{
+    font-size: 14px;
+    color: #ddd;
+    margin-left: 5px;
+    background-color: #555;
+    padding: 2px 6px;
+    border-radius: 12px;
+
+}
+
+.navbar ul li a:hover
+
+{
+    text-decoration: underline;
+}
+
+
+.nickname 
+
+{
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.projetosNaSecao 
+
+{
+    margin: 30px auto;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+
+}
+
+.projetosNaSecao h2 
+
+{
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: black;
+}
+
+#projectsContainer 
+
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.projetoCard 
+
+{
+    background-color: #0d1117;
+    border: 1px solid #ddd;
+    color: white;
+    border-radius: 5px;
+    width: 30%;
+    max-width: 400px;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.projetoContainer 
+
+{
+    display: none;
+    margin-top: 10px;
+
+}
+
+.projetoNome 
+
+{
+    font-size: 16px;
+    font-weight: bold;
+}

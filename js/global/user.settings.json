@@ -1,0 +1,39 @@
+{
+    "userColors": {
+        "bgColor": "standart",
+        "txtColor": "standart",
+        "mainColor": "standart",
+        "subColor": "standart",
+        "specifiedColors": {
+            "homePage": {
+                "bgColor": "standart",
+                "subColor": "standart",
+                "txtColor": "standart",
+                "modalsColors": {
+                    "notifieModalColors": {
+                        "txtColor": "",
+                        "bgColor": ""                       
+                    }
+                }
+            }, 
+            "chatPage": {
+
+            },
+            "profilPage": {
+
+            },
+            "loginPage": {
+
+            } 
+        }
+    },
+    "userLanguages": {
+        "defaultLanguage": "pt-br",
+        "preferredLanguages": ["en", "pt-br"]
+    },
+    "userFonts": {
+        "mainFont": "standart",
+        "postFont": "standart",
+        "fontImports": []
+    }
+}
