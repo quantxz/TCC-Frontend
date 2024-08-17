@@ -9,15 +9,26 @@
                 "bgColor": "standart",
                 "subColor": "standart",
                 "txtColor": "standart",
-                "modalsColors": {
+                "homeModalsColors": {
                     "notifieModalColors": {
                         "txtColor": "",
                         "bgColor": ""                       
+                    },
+                    "postModalColors": {
+                        "txtColor": "",
+                        "bgColor": "",
+                        "inputBgColor": "",
+                        "inputBoderColor": "",
+                        "inputBorderShadowColor": ""  
                     }
                 }
             }, 
             "chatPage": {
-
+                "leftMenuColor": "",
+                "contactsColors": {
+                    "contactsBgColors": "",
+                    "contactInputColors": ""
+                }
             },
             "profilPage": {
 
