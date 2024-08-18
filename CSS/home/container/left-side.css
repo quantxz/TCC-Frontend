@@ -1,3 +1,7 @@
+:root {
+    --dynamic-hover-bg-color: #f00;
+}
+
 logo {
     display: flex;
     position: relative;
@@ -18,6 +22,7 @@ nav {
     top: 50%;
     transform: translateY(-50%);
     z-index: 110;
+    color: rgb(22, 194, 194);
 }
 
 nav ul {
@@ -31,7 +36,6 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #1da1f2;
     font-weight: bold;
 }
 
@@ -49,7 +53,7 @@ nav ul li a {
 }
 
 .profile-container:hover {
-    background-color: #c1f3e360;
+    background-color: var(--dynamic-hover-bg-color);
     box-shadow: 1px 1px 5px 5px #00000025;
     transition: 1.7s;
 }

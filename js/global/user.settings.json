@@ -1,14 +1,14 @@
 {
     "userColors": {
-        "bgColor": "standart",
+        "bgColor": "#0d1117",
         "txtColor": "standart",
         "mainColor": "standart",
         "subColor": "standart",
         "specifiedColors": {
             "homePage": {
                 "bgColor": "standart",
-                "subColor": "standart",
-                "txtColor": "standart",
+                "subColor": "green",
+                "txtColor": "green",
                 "homeModalsColors": {
                     "notifieModalColors": {
                         "txtColor": "",
@@ -26,12 +26,12 @@
             "chatPage": {
                 "leftMenuColor": "",
                 "contactsColors": {
-                    "contactsBgColors": "",
-                    "contactInputColors": ""
+                    "contactsBgColor": "",
+                    "contactInputColor": "",
+                    "contactUlColor": "",
+                    "contactLiColor": "",
+                    "contactLiTxtColor": ""
                 }
-            },
-            "profilPage": {
-
             },
             "loginPage": {
 
