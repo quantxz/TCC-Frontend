@@ -1,7 +1,7 @@
 // 
 const apiReq = async (nickname) => {
     const nick = nickname
-    const res = await fetch(`https://api.github.com/users/rrvsb/repos`);
+    const res = await fetch(`https://api.github.com/users/quantxz/repos`);
     return res
 }
 
@@ -18,9 +18,9 @@ const render = async () => {
                 items[i + 1].children[i].textContent = data[i + 1].full_name
                 items[i + 2].children[i].textContent = data[i + 2].full_name
                 // deve ter uma forma mais eficiente de fazer isso aqui, mas fds, se ta funcionando ta certo 👍
-                linguas[i].textContent = data[i].language
-                linguas[i + 1].textContent = data[i + 1].language
-                linguas[i + 2].textContent = data[i + 2].language
+                linguas[i].textContent = data[i].language != null ? data[i].language : "sem descrição"
+                linguas[i + 1].textContent = data[i + 1].language != null ? data[i + 1].language : "sem descrição"
+                linguas[i + 2].textContent = data[i + 2].language != null ? data[i + 2].language : "0 linguagens"
                 
                 break;
             case 1:
