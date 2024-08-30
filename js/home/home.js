@@ -1,9 +1,11 @@
-window.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const nick = JSON.stringify(localStorage.getItem("userNickname"))
+
     const includer = new Include;
     includer.ReadHTML("import");
-    const aut = new UserAutenticator();
-    aut.loginAutenticator();
+
+    const auth = new UserAutenticator();
+    auth.loginAutenticator();
 
     const nickname = JSON.parse(nick)
     const api = new API(ENV.authToken)
@@ -26,7 +28,7 @@ doPosts.addEventListener("click", () => {
     document.querySelector(".post-modal").id = "post-modal-active"
 })
 
-closeModal.forEach(item => {
+closeModal.forEach(item => {       
     item.addEventListener("click", () => {
         document.querySelector(".modals").style.display = "none"
         document.querySelectorAll(".modal").forEach(item => {

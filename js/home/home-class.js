@@ -84,7 +84,7 @@ class HomeFunctions {
                             </svg>
                         </div>
                     </div><!--fechamento da heart-container-->
-                    <p class='postLikes postLikeId${data.id} likes${data.likes}' value=${data.likes}>${data.likes} Curtidas</p>
+                    <p class='postLikes postLikeId${data.id} likes${data.likes}' value=${data.likes < 0 ? 0 : data.likes}>${data.likes < 0 ? 0 : data.likes} Curtidas</p>
                 </div>
                 <div class="post-comments">
                     <ion-icon name="chatbubble-ellipses"></ion-icon>
