@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const postLikesDiv = e.target.closest('.post-likes');
                 const likesMetadata = postLikesDiv.getAttribute('metadata');
                 const likesMetadataObj = JSON.parse(likesMetadata); // Converte a string JSON em um objeto JavaScript
-
+                console.log("metadata: " + likesMetadataObj)
                 //Dar um jeito do mesmo usuario não poder dar like duas vezes
                 const data = {
                     id,

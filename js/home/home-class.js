@@ -1,7 +1,7 @@
 class HomeFunctions {
     apiClass = new API();
     identifier = new Identifier();
-
+    
     *postsGenerator(postsArray) {
         let count = 0;
         let postsBatch = [];
@@ -45,7 +45,8 @@ class HomeFunctions {
         const dataa = {
             author: data.author,
             postId: data.id
-        };
+        };  
+
 
         // Renderiza o post sem aguardar a verificação de "like"
         postElement.innerHTML = `
@@ -54,7 +55,7 @@ class HomeFunctions {
                     <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="">
                 </div>
                 <div class="post-profile-infos">
-                    <p>Anderson</p>
+                    <p>@${data.authorName}</p>
                     <p>@${data.author}</p>
                 </div>
                 <div class="post-options-header">
@@ -118,7 +119,17 @@ class HomeFunctions {
             // Verifica se o post já foi curtido e atualiza o estado do checkbox
             const postAlreadyLiked = await this.apiClass.findLikedPost(dataa);
             const checkbox = document.querySelector(`#postInputCheckId${data.id}`);
+            
             checkbox.checked = postAlreadyLiked == true ? true : false
+
+            checkbox.addEventListener('change', (event) => {
+                if (this.apiClass.buttonIsPressed === true) {
+                    event.preventDefault();
+                    checkbox.checked = false; // Impede que o checkbox seja marcado
+                    alert('Você não pode curtir este post.');
+                }
+            });
+
         })
 
     }

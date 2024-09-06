@@ -93,14 +93,14 @@ socket.on("message", (data) => {
 });
 
 // por algum motivo sempre que o save messages dispara, a pagina recarrega mas foda-se tem outras coisas pra arrumar
-let delay = 30 * 60 * 1000 // 30 minutos
-function sendMessageAfterDelay() {
-    try {
-        socket.emit("save messages", messages);
-        messages = []
-    } catch (error) {
-        console.log(error)
-    }
-}
+// let delay = 30 * 60 * 1000 // 30 minutos
+// function sendMessageAfterDelay() {
+//     try {
+//         socket.emit("save messages", messages);
+//         messages = []
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
-setInterval(sendMessageAfterDelay(), delay)
+// setInterval(sendMessageAfterDelay(), delay)

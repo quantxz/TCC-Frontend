@@ -115,7 +115,6 @@
             const opts = document.querySelectorAll(".opts-treeDots");
 
             opts.forEach(button => {
-                console.log(button)            
                 button.addEventListener("click", () => {
                     const optsMenu = button.nextElementSibling;
                     optsMenu.id = optsMenu.id == "" ? "post-header-opts-active" : ""

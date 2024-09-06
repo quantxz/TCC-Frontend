@@ -24,11 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (typeof subValue === 'object' && subValue !== null) {
                         for (const [subSubKey, subSubValue] of Object.entries(subValue)) {
 
-
                             switch (subSubKey) {
                                 case "homePage":
                                     for (const [subSubSubKey, subSubSubValue] of Object.entries(subSubValue)) {
-                                        console.log(`  Subpropriedade ${subSubSubKey}:`, subSubSubValue);
                                         switch (subSubSubKey) {
                                             case "bgColor":
                                                 document.querySelector('.feed').style.backgroundColor = subSubSubValue
@@ -45,15 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                             case "txtColor":
                                                 const containerChildren = document.querySelector('.sidebar-left').children;
-                                                console.log(containerChildren)
+
                                                 for (const child of containerChildren) {
-                                                    console.log(child)
+                                               
                                                     child.style.color = subSubSubValue;
                                                 }
                                                 break;
+
                                         }
                                     }
-                                    break 
+                                    break ;
                             }
                         }
                     }

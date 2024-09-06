@@ -1,14 +1,14 @@
 {
     "userColors": {
-        "bgColor": "#0d1117",
+        "bgColor": "standart",
         "txtColor": "standart",
         "mainColor": "standart",
         "subColor": "standart",
         "specifiedColors": {
             "homePage": {
                 "bgColor": "standart",
-                "subColor": "green",
-                "txtColor": "green",
+                "subColor": "standart",
+                "txtColor": "standart",
                 "homeModalsColors": {
                     "notifieModalColors": {
                         "txtColor": "",
@@ -34,7 +34,6 @@
                 }
             },
             "loginPage": {
-
             } 
         }
     },
