@@ -26,8 +26,9 @@ class HomeFunctions {
         document.querySelector(`.postLikeId${id}`).innerHTML = `${postLikes.likes} Curtidas`
     }
 
-    async renderPost(data) {
-        const postElement = document.createElement('div');
+    async renderPost(data) {   
+        console.log(data)
+        const postElement = document.createElement('div'); 
         postElement.classList.add("post");
         postElement.setAttribute('metadata', JSON.stringify({ id: data.id, createdAt: data.createdAt, type: data.type }));
         postElement.setAttribute('data-likes', data.likes || 0);
@@ -55,7 +56,7 @@ class HomeFunctions {
                     <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="">
                 </div>
                 <div class="post-profile-infos">
-                    <p>@${data.authorName}</p>
+                    <p>@${data.attributes[0][1].name}</p>
                     <p>@${data.author}</p>
                 </div>
                 <div class="post-options-header">

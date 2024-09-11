@@ -263,7 +263,7 @@ class API extends ENV {
                 }
             });
             const responseData = await response.json();
-            console.log(responseData)
+            
             if (responseData.postInfo.booleanValue == true) {
 
                 return true
