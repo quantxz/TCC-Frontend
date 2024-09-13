@@ -35,6 +35,9 @@
 }
 
 .post-content img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     width: 50%;
     height: 50%;
 }

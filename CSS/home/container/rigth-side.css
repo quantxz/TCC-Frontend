@@ -1,5 +1,6 @@
 .sidebar-right {
-    display: none;
+    display: flex;
+    flex-direction: column;
 }
 
 #sidebar-right-active {
