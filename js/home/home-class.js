@@ -26,8 +26,9 @@ class HomeFunctions {
         document.querySelector(`.postLikeId${id}`).innerHTML = `${postLikes.likes} Curtidas`
     }
 
-    async renderPost(data) {
-        const postElement = document.createElement('div');
+    async renderPost(data) {   
+
+        const postElement = document.createElement('div'); 
         postElement.classList.add("post");
         postElement.setAttribute('metadata', JSON.stringify({ id: data.id, createdAt: data.createdAt, type: data.type }));
         postElement.setAttribute('data-likes', data.likes || 0);
@@ -55,7 +56,7 @@ class HomeFunctions {
                     <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="">
                 </div>
                 <div class="post-profile-infos">
-                    <p>@${data.authorName}</p>
+                    <p>@${data.authorName ? data.authorName : "undefined"}</p>
                     <p>@${data.author}</p>
                 </div>
                 <div class="post-options-header">
@@ -87,11 +88,14 @@ class HomeFunctions {
                     </div><!--fechamento da heart-container-->
                     <p class='postLikes postLikeId${data.id} likes${data.likes}' value=${data.likes < 0 ? 0 : data.likes}>${data.likes < 0 ? 0 : data.likes} Curtidas</p>
                 </div>
+
+            </div>`;
+            /* readicionar dps
                 <div class="post-comments">
                     <ion-icon name="chatbubble-ellipses"></ion-icon>
                     <p>Comentar</p>
-                </div>
-            </div>`;
+                </div> 
+            */
         const postsContainer = document.querySelector('.posts');
         postsContainer.appendChild(postElement);
         

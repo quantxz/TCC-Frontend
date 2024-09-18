@@ -43,3 +43,74 @@
     text-decoration: none;
     color: #1da1f2;
 }
+
+.trends {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    width: 95%;
+    height: 50%;
+    margin-bottom: 15px;
+}
+
+.thrend-list {
+    padding: 4px 4%;
+    top: 15px;
+    position: relative;
+    width: 95%;
+    height: 55%;
+}
+
+.who-to-follow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    width: 95%;
+    height: 55%;
+}
+
+.most-viwed-list {
+    padding: 4px 4%;
+    top: 1.5px;
+    position: relative;
+    width: 95%;
+    height: 93%;
+}
+
+.most-viwed-user {
+    border: 1px solid #fff;
+    border-radius: 7.5px;
+    position: relative;
+    width: 98%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+
+    & .mvu-profile-pic {
+        width: 30%;
+        background-image: url();
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top-left-radius: 7.5px;
+        border-bottom-left-radius: 7.5px;
+    }
+
+    & .user-links {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        padding-left: 5%;
+        
+    }
+
+}
