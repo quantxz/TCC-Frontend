@@ -8,7 +8,7 @@ const nick = nickname
 let messages = []
 
 /*em produção https://tcc-u2qf.onrender.com */
-const socket = io("http://localhost:3000", {
+const socket = io("https://tcc-qmro.onrender.com", {
     query: { roomName: room }
 });
 

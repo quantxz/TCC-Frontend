@@ -113,7 +113,7 @@ class API extends ENV {
             formData.append(data.content instanceof File ? 'file' : 'content', data.content);
             formData.append('userNickname', data.userNickname);
 
-            const response = await fetch(`http://localhost:3000/posts/create`, {
+            const response = await fetch(`https://tcc-qmro.onrender.com/posts/create`, {
                 method: 'POST',
                 body: formData
             });
@@ -134,7 +134,7 @@ class API extends ENV {
 
     async PostFind() {
         try {
-            const response = await fetch(`http://localhost:3000/posts/get-all`);
+            const response = await fetch(`https://tcc-qmro.onrender.com/posts/get-all`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar posts');
             }
@@ -148,7 +148,7 @@ class API extends ENV {
 
     async findUniquePost(id) {
         try {
-            const response = await fetch(`http://localhost:3000/posts/post/${id}`);
+            const response = await fetch(`https://tcc-qmro.onrender.com/posts/post/${id}`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar post');
             }
@@ -176,7 +176,7 @@ class API extends ENV {
                     document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
                 }, 1500)
 
-                const response = await fetch(`http://localhost:3000/posts/likes?type=Post&reqType=like`, {
+                const response = await fetch(`https://tcc-qmro.onrender.com/posts/likes?type=Post&reqType=like`, {
                     method: "PATCH",
                     body: JSON.stringify(data),
                     headers: {
@@ -186,7 +186,7 @@ class API extends ENV {
 
 
                 /* Atualiza se o post foi marcado com like ou não no backend*/
-                const postLikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=like`, {
+                const postLikedTable = await fetch(`https://tcc-qmro.onrender.com/posts/likedPosts?type=like`, {
                     method: "PATCH",
                     body: JSON.stringify(likedPostsData),
                     headers: {
@@ -224,14 +224,14 @@ class API extends ENV {
                     document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
                 }, 1500)
 
-                const response = await fetch(`http://localhost:3000/posts/likes?type=Post&reqType=unlike`, {
+                const response = await fetch(`https://tcc-qmro.onrender.com/posts/likes?type=Post&reqType=unlike`, {
                     method: "PATCH",
                     body: JSON.stringify(data),
                     headers: {
                         "Content-Type": "application/json"
                     }
                 });
-                const postUnlikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=unlike`, {
+                const postUnlikedTable = await fetch(`https://tcc-qmro.onrender.com/posts/likedPosts?type=unlike`, {
                     method: "PATCH",
                     body: JSON.stringify(likedPostsData),
                     headers: {
