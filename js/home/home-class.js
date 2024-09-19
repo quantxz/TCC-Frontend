@@ -56,7 +56,7 @@ class HomeFunctions {
                     <img src="/assets/download.png" alt="">
                 </div>
                 <div class="post-profile-infos">
-                    <p>@${data.authorName ? data.authorName : "undefined"}</p>
+                    <p>${data.authorName ? data.authorName : "undefined"}</p>
                     <p>@${data.author}</p>
                 </div>
                 <div class="post-options-header">
