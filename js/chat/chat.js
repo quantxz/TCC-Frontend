@@ -16,7 +16,7 @@ let messages = [];
 
 // Função para inicializar o socket
 function initSocket(room) {
-    const socket = io("http://localhost:3000", {
+    const socket = io("https://tcc-qmro.onrender.com", {
         query: { roomName: room }
     });
 
