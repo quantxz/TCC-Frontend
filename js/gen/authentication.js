@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var UserAutenticator = /** @class */ (function () {
     function UserAutenticator() {
-        this.url = "http://localhost:3000";
+        this.url = "https://tcc-qmro.onrender.com";
     }
     UserAutenticator.prototype.findUser = function (username) {
         return __awaiter(this, void 0, void 0, function () {

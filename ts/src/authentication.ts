@@ -1,5 +1,5 @@
 class UserAutenticator {
-    private url: string = "http://localhost:3000"
+    private url: string = "https://tcc-qmro.onrender.com"
 
     private async findUser(username: string): Promise<any> {
         const url = `${this.url}/users/${username}`;
