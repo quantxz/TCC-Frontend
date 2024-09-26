@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const posts = await apiClass.PostFind();
     functions.postsGenerator(posts).next();
     const likesInput = document.querySelectorAll('.checkbox');
-
+    
     setTimeout(() => {
         likesInput.forEach(input => {
             input.addEventListener('change', (e) => {
@@ -83,7 +83,7 @@ postForm.addEventListener('submit', async (e) => {
     const data = {
         title: document.querySelector('#title').value,
         content: file ? file : document.querySelector('#input-modal-post-content').value,
-        userNickname: localStorage.getItem("userNickname")
+        userNickname: sessionStorage.getItem("userNickname")
     };
 
     await apiClass.Post(data);

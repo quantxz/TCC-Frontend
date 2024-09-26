@@ -78,8 +78,8 @@ formLogin.addEventListener("submit", async (e) => {
     })
     const api = new API(authToken);
 
-    localStorage.setItem("userNickname", userInput)
-    localStorage.setItem("user", user)
+    sessionStorage.setItem("userNickname", userInput)
+    sessionStorage.setItem("user", user)
     await api.loginRequest(userInput, passwordInput, emailInput);
 
 });

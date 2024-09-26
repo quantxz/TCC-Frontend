@@ -1,9 +1,9 @@
 const url = new URLSearchParams(window.location.search);
 const room = url.get("room");
 
-const user = localStorage.getItem("userNickname");
+const user = sessionStorage.getItem("userNickname");
 const messagesDiv = document.querySelector(".messages");
-const { nickname } = JSON.parse(localStorage.getItem("userInfo"));
+const { nickname } = JSON.parse(sessionStorage.getItem("userInfo"));
 const nick = nickname
 let messages = []
 

@@ -93,7 +93,7 @@ var UserAutenticator = /** @class */ (function () {
         });
     };
     UserAutenticator.prototype.loginAutenticator = function () {
-        var user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
+        var user = JSON.parse(JSON.stringify(sessionStorage.getItem("user")));
         if (!user) {
             this.userExpulser({ user: "error" });
         }

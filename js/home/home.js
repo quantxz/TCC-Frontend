@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const nick = JSON.stringify(localStorage.getItem("userNickname"))
+    const nick = JSON.stringify(sessionStorage.getItem("userNickname"))
 
     const includer = new Include;
     includer.ReadHTML("import");
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const api = new API(ENV.authToken)
     const result = await api.findUser(nickname)
     const userInfo = JSON.stringify(result.returnedData)
-    localStorage.setItem("userInfo", userInfo)
+    sessionStorage.setItem("userInfo", userInfo)
 })
 
 const notifies = document.querySelector(".notifications");

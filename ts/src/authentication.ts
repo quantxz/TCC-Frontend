@@ -34,7 +34,7 @@ class UserAutenticator {
     }
     
     public loginAutenticator() {
-        const user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
+        const user = JSON.parse(JSON.stringify(sessionStorage.getItem("user")));
         if(!user) {
             this.userExpulser({user: "error"});
         } else if(user.user === "" || user.password === "" || user.email === "") {
