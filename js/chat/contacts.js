@@ -1,11 +1,11 @@
-const contactsDivs = document.querySelectorAll(".contact");
+// const contactsDivs = document.querySelectorAll(".contact");
 
-contactsDivs.forEach((contact) => {
-    contact.addEventListener("click" , socket.emit("find_messages", room));
-});
+// contactsDivs.forEach((contact) => {
+//     contact.addEventListener("click" , socket.emit("find_messages", room));
+// });
 
-socket.on("find_messages", (data) => {
-    data.forEach(message => {
-        render(message)
-    })
-})
+// socket.on("find_messages", (data) => {
+//     data.forEach(message => {
+//         render(message)
+//     })
+// })

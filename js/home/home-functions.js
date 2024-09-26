@@ -2,6 +2,7 @@ const postForm = document.querySelector('.postForm');
 const apiClass = new API();
 const functions = new HomeFunctions();
 
+
 document.addEventListener("DOMContentLoaded", async () => {
     const posts = await apiClass.PostFind();
     functions.postsGenerator(posts).next();
@@ -87,4 +88,6 @@ postForm.addEventListener('submit', async (e) => {
     };
 
     await apiClass.Post(data);
+
+    location.reload()
 });
