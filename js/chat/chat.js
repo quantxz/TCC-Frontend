@@ -12,7 +12,7 @@ const groups = document.querySelector(".groups");
 const searchBar = document.querySelector(".searchBar");
 const menu = document.querySelector(".menuOptions");
 const chatFuncs = new chatFunctions();
-let messages = [];
+let currentMessages = [];
 
 // Função para inicializar o socket
 function initSocket(room) {
@@ -93,8 +93,7 @@ form.addEventListener("submit", (e) => {
         hour: `${hours}:${minutes}:${seconds}`
     };
 
-    // console.log(messageToArray)
-    // messages.push(messageToArray);
+    currentMessages.push(messageToArray)
     chatFuncs.saveMessages(messageToArray);
 });
 
@@ -133,6 +132,9 @@ contacts.forEach(contact => {
 
             socket.on('all_messages', (messages) => {
                 for(message of messages) {
+                    render(message)
+                }
+                for (const message of currentMessages) {
                     render(message)
                 }
             });
