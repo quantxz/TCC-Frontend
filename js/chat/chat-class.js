@@ -6,4 +6,14 @@ class chatFunctions {
 
         return messages
     }
+
+    saveMessages(data) {
+        console.log(data)
+        socket.emit("save messages queue", {
+            author: data.author,
+            content: data.content,
+            hour: data.hour,
+            room: data.room
+        })
+    }
 }

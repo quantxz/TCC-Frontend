@@ -11,7 +11,7 @@ const check = document.querySelector(".checkBoxMenuMobile");
 const groups = document.querySelector(".groups");
 const searchBar = document.querySelector(".searchBar");
 const menu = document.querySelector(".menuOptions");
-
+const chatFuncs = new chatFunctions();
 let messages = [];
 
 // Função para inicializar o socket
@@ -34,6 +34,7 @@ function initSocket(room) {
 let socket = initSocket(room);
 
 function render(data) {
+    console.log(data)
     const message = document.createElement("div");
     message.className = "message";
 
@@ -53,7 +54,7 @@ function render(data) {
 
     const nicknameElement = document.createElement("p");
     nicknameElement.className = "userInChatName";
-    nicknameElement.textContent = data.author;
+    nicknameElement.innerText = data.author;
 
     if (JSON.stringify(data.author) === JSON.stringify(nick)) {
         message.id = "myMessage";
@@ -91,16 +92,21 @@ form.addEventListener("submit", (e) => {
         content: messageInput.value,
         hour: `${hours}:${minutes}:${seconds}`
     };
-    messages.push(messageToArray);
+
+    // console.log(messageToArray)
+    // messages.push(messageToArray);
+    chatFuncs.saveMessages(messageToArray);
 });
 
-contacts.forEach(item => {
-    removeSelectedFromOthers(item);
-    item.addEventListener("click", async (e) => {
 
-        const newRoom = item.getAttribute("room");
-        item.id = "chatSelected";
-        removeSelectedFromOthers(item);
+
+contacts.forEach(contact => {
+    removeSelectedFromOthers(contact);
+    contact.addEventListener("click", async (e) => {
+
+        const newRoom = contact.getAttribute("room");
+        contact.id = "chatSelected";
+        removeSelectedFromOthers(contact);
 
         if (newRoom && newRoom !== room) {
             // Atualiza a room
@@ -123,9 +129,18 @@ contacts.forEach(item => {
 
             // Limpa as mensagens anteriores
             messagesDiv.innerHTML = '';
+            socket.emit("find_messages", room)
+
+            socket.on('all_messages', (messages) => {
+                for(message of messages) {
+                    render(message)
+                }
+            });
         }
     });
 });
+
+
 
 check.addEventListener("change", () => {
     if(check.checked) {
