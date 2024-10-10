@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const posts = await apiClass.PostFind();
     functions.postsGenerator(posts).next();
     const likesInput = document.querySelectorAll('.checkbox');
-    
+
     setTimeout(() => {
         likesInput.forEach(input => {
             input.addEventListener('change', (e) => {
@@ -91,3 +91,24 @@ postForm.addEventListener('submit', async (e) => {
 
     location.reload()
 });
+
+const posts = document.querySelectorAll(".posts");
+//arrumar pra não pegar o botão de like e corrigir o bug do like não esta mais recuperando o title
+setTimeout(() => {
+    posts.forEach(post => {
+        const children = post.children;
+        Array.from(children).forEach(child => {
+            const { id } = JSON.parse(child.getAttribute("metadata"));
+
+            child.addEventListener("click", () => {
+                document.querySelector(".post-focus").prepend(child);
+                document.querySelector(".post-focus").id = "post-focus"
+                child.classList.remove("post")
+                child.classList.add("post-focused")
+                window.scrollTo(0, 500);
+                document.querySelector(".posts").style.display = "none"
+            })
+
+        }); 
+    });
+}, 1000);

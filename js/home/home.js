@@ -58,6 +58,8 @@ const clearButton = document.querySelector(".clear-button");
 const contentInput = document.querySelector("#input-modal-post-content");
 const postMenu = document.querySelector(".post-menu");
 const fileInput = document.getElementById('file-input');
+
+
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
 

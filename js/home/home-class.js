@@ -1,7 +1,7 @@
 class HomeFunctions {
     apiClass = new API();
     identifier = new Identifier();
-    
+
     *postsGenerator(postsArray) {
         let count = 0;
         let postsBatch = [];
@@ -26,14 +26,14 @@ class HomeFunctions {
         document.querySelector(`.postLikeId${id}`).innerHTML = `${postLikes.likes} Curtidas`
     }
 
-    async renderPost(data) {   
+    async renderPost(data) {
 
-        const postElement = document.createElement('div'); 
+        const postElement = document.createElement('div');
         postElement.classList.add("post");
         postElement.setAttribute('metadata', JSON.stringify({ id: data.id, createdAt: data.createdAt, type: data.type }));
         postElement.setAttribute('data-likes', data.likes || 0);
         const response = this.identifier.Identifier(data.content);
-        let content = ''; // Inicialize content como uma string vazia
+        let content = '';
 
         if (response.type == "link" && response.image == "no") {
             content = `<a href="${data.content}">${data.content}</a>`;
@@ -46,7 +46,7 @@ class HomeFunctions {
         const dataa = {
             author: data.author,
             postId: data.id
-        };  
+        };
 
 
         // Renderiza o post sem aguardar a verificação de "like"
@@ -87,18 +87,16 @@ class HomeFunctions {
                         </div>
                     </div><!--fechamento da heart-container-->
                     <p class='postLikes postLikeId${data.id} likes${data.likes}' value=${data.likes < 0 ? 0 : data.likes}>${data.likes < 0 ? 0 : data.likes} Curtidas</p>
+                    <div class="post-comments">
+                        <img src="/assets/chat-dots-fill.svg">
+                        <p>Comentar</p>
+                    </div> 
                 </div>
 
             </div>`;
-            /* readicionar dps
-                <div class="post-comments">
-                    <ion-icon name="chatbubble-ellipses"></ion-icon>
-                    <p>Comentar</p>
-                </div> 
-            */
         const postsContainer = document.querySelector('.posts');
         postsContainer.appendChild(postElement);
-        
+
         const postContentContainer = postElement.querySelector(".post-content");
 
         if (postContentContainer) {
@@ -123,7 +121,7 @@ class HomeFunctions {
             // Verifica se o post já foi curtido e atualiza o estado do checkbox
             const postAlreadyLiked = await this.apiClass.findLikedPost(dataa);
             const checkbox = document.querySelector(`#postInputCheckId${data.id}`);
-            
+
             checkbox.checked = postAlreadyLiked == true ? true : false
 
             checkbox.addEventListener('change', (event) => {

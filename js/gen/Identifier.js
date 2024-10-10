@@ -4,7 +4,7 @@ var Identifier = /** @class */ (function () {
         this.imageExtensionsList = [
             "jpg", "gif", "png", "svg", "webp", "raw", "tiff", "bmp", "pdf", "jpeg",
             "heif", "heic", "indd", "ai", "psd", "eps", "dng", "cr2", "nef", "orf", "sr2",
-            "aviff", "avif"
+            "aviff", "avif", "jfif"
         ];
     }
     Identifier.prototype.StartWith = function (url) {

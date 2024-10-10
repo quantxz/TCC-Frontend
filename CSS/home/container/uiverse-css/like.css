@@ -4,6 +4,7 @@
   width: 30px;
   height: 30px;
   transition: .3s;
+  z-index: 155;
 }
 
 .heart-container .checkbox {
