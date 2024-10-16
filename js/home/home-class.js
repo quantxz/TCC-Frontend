@@ -87,7 +87,7 @@ class HomeFunctions {
                         </div>
                     </div><!--fechamento da heart-container-->
                     <p class='postLikes postLikeId${data.id} likes${data.likes}' value=${data.likes < 0 ? 0 : data.likes}>${data.likes < 0 ? 0 : data.likes} Curtidas</p>
-                    <div class="post-comments">
+                    <div class="commentsOfPost post-comments">
                         <img src="/assets/chat-dots-fill.svg">
                         <p>Comentar</p>
                     </div> 

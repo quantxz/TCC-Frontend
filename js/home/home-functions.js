@@ -93,13 +93,14 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 const posts = document.querySelectorAll(".posts");
-//arrumar pra não pegar o botão de like e corrigir o bug do like não esta mais recuperando o title
+const postsComments = document.querySelectorAll(".commentsOfPost");
+
 setTimeout(() => {
-    posts.forEach(post => {
+    //arrumar o bug
+    document.querySelectorAll(".commentsOfPost").forEach(post => {
         const children = post.children;
         Array.from(children).forEach(child => {
-            const { id } = JSON.parse(child.getAttribute("metadata"));
-
+            console.log(child)
             child.addEventListener("click", () => {
                 document.querySelector(".post-focus").prepend(child);
                 document.querySelector(".post-focus").id = "post-focus"
@@ -108,7 +109,7 @@ setTimeout(() => {
                 window.scrollTo(0, 500);
                 document.querySelector(".posts").style.display = "none"
             })
-
-        }); 
+        })
     });
-}, 1000);
+
+}, 3000)
