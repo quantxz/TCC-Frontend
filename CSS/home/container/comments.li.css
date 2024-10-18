@@ -4,6 +4,9 @@
     min-height: 100vh;
     display: block;
 }
+.post-comments:hover {
+    cursor: pointer;
+}
 
 .post-focus {
     display: none;
@@ -111,6 +114,11 @@
 
 .comment-header .comment-profile-infos p+p {
     margin-top: 5px;
+}
+
+.post-focus .post-footer {
+    position: relative;
+    top: 5vw;
 }
 
 .comment-footer {

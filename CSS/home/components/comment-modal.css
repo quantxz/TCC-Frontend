@@ -1,0 +1,24 @@
+body {
+    background-color: black;
+}
+
+.comment-modal-container {
+    font-family: 'poppins', sans-serif;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vw;
+    height: 25vh;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

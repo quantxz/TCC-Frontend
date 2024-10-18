@@ -99,17 +99,19 @@ setTimeout(() => {
     //arrumar o bug
     document.querySelectorAll(".commentsOfPost").forEach(post => {
         const children = post.children;
+        const DivPost = post.parentElement.parentElement.parentElement;
+        console.log("\n", post.parentElement.parentElement.parentElement, "\n")
         Array.from(children).forEach(child => {
-            console.log(child)
-            child.addEventListener("click", () => {
-                document.querySelector(".post-focus").prepend(child);
+
+            child.parentElement.addEventListener("click", () => {
+                document.querySelector(".post-focus").prepend(DivPost);
                 document.querySelector(".post-focus").id = "post-focus"
-                child.classList.remove("post")
-                child.classList.add("post-focused")
+                DivPost.classList.remove("post")
+                DivPost.classList.add("post-focused")
                 window.scrollTo(0, 500);
                 document.querySelector(".posts").style.display = "none"
             })
         })
     });
 
-}, 3000)
+}, 1000)
