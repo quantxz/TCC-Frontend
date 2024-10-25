@@ -36,11 +36,12 @@
 }
 
 .post-content img {
-    position: relative;
+    z-index: 9;
     left: 50%;
+    position: relative;
     transform: translateX(-50%);
-    width: 50%;
-    height: 50%;
+    max-width: 10vh;
+    max-height: 10vh;
 }
 
 .post-content .title {
@@ -87,6 +88,8 @@
     height: 5.5vh;
     display: flex;
     flex-direction: row;
+    z-index: 999;
+    position: relative;
 }
 
 .post-footer .post-likes {

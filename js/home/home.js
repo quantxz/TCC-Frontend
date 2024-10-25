@@ -1,3 +1,5 @@
+let api;
+let homeFuncs;
 document.addEventListener("DOMContentLoaded", async () => {
     const nick = JSON.stringify(sessionStorage.getItem("userNickname"))
 
@@ -8,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     auth.loginAutenticator();
 
     const nickname = JSON.parse(nick)
-    const api = new API(ENV.authToken)
+    api = new API(ENV.authToken)
+    homeFuncs = new HomeFunctions()
     const result = await api.findUser(nickname)
     const userInfo = JSON.stringify(result.returnedData)
     sessionStorage.setItem("userInfo", userInfo)
@@ -41,10 +44,13 @@ closeModal.forEach(item => {
 const exploreSection = document.querySelector(".explore-section-link");
 const feedSection = document.querySelector(".feed-section-link");
 
-exploreSection.addEventListener("click", () => {
+exploreSection.addEventListener("click", async () => {
     document.querySelector(".explore-section").style.display = "block"
     document.querySelector(".feed-section").style.display = "none"
     document.querySelector(".sidebar-right").id = "sidebar-right-active"
+    
+    const explorePosts = await api.explorePosts();
+    homeFuncs.renderMostFamousPosts(explorePosts.mostViwedPosts)
 })
 
 feedSection.addEventListener("click", () => {
