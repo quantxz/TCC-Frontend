@@ -9,11 +9,14 @@ class chatFunctions {
 
     saveMessages(data) {
         console.log(data)
-        socket.emit("save messages queue", {
-            author: data.author,
-            content: data.content,
-            hour: data.hour,
-            room: data.room
-        })
+        data.forEach(message => {
+            console.log(message)
+            socket.emit("save messages queue", {
+                author: message.author,
+                content: message.content,
+                hour: message.hour,
+                room: message.room
+            })
+        });
     }
 }

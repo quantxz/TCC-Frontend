@@ -97,3 +97,25 @@ clearButton.addEventListener("click", () => {
     clearButton.style.display = "none"
 })
 
+document.querySelector(".closeCommentModal").addEventListener("click", () => {
+    document.querySelector(".comment-modal-container").id = ""
+})
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Cria uma nova imagem
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.maxWidth = '100%'; // Ajusta a largura da imagem
+
+            // Encontra o input de texto e substitui pelo elemento de imagem
+            const textInput = document.getElementById('textInput');
+            textInput.style.display = 'none'; // Oculta o input de texto
+            textInput.parentNode.insertBefore(img, textInput.nextSibling); // Adiciona a imagem após o input
+        };
+        reader.readAsDataURL(file); // Lê o arquivo como URL
+    }
+});

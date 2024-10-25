@@ -34,7 +34,7 @@ function initSocket(room) {
 let socket = initSocket(room);
 
 function render(data) {
-    console.log(data)
+    
     const message = document.createElement("div");
     message.className = "message";
 
@@ -58,6 +58,10 @@ function render(data) {
 
     if (JSON.stringify(data.author) === JSON.stringify(nick)) {
         message.id = "myMessage";
+    }
+
+    if(data.hasOwnProperty('id')) {
+        message.setAttribute('metadata', JSON.stringify(data));
     }
 
     infos.appendChild(profileInChatPic);
@@ -94,9 +98,12 @@ form.addEventListener("submit", (e) => {
     };
 
     currentMessages.push(messageToArray)
-    chatFuncs.saveMessages(messageToArray);
 });
 
+// setInterval(() => {
+//     chatFuncs.saveMessages(currentMessages);
+//     currentMessages = [];
+// }, 600)
 
 
 contacts.forEach(contact => {
@@ -131,7 +138,7 @@ contacts.forEach(contact => {
             socket.emit("find_messages", room)
 
             socket.on('all_messages', (messages) => {
-                for(message of messages) {
+                for(const message of messages) {
                     render(message)
                 }
                 for (const message of currentMessages) {
