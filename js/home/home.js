@@ -80,9 +80,6 @@ document.getElementById('file-input').addEventListener('change', function(event)
 
         reader.readAsDataURL(file);
 
-        console.log('File name:', file.name);
-        console.log('File size:', file.size);
-        console.log('File type:', file.type);
     }
 });
 
@@ -113,9 +110,33 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
             // Encontra o input de texto e substitui pelo elemento de imagem
             const textInput = document.getElementById('textInput');
-            textInput.style.display = 'none'; // Oculta o input de texto
             textInput.parentNode.insertBefore(img, textInput.nextSibling); // Adiciona a imagem após o input
+            img.classList.add("CommentImageContent")
         };
         reader.readAsDataURL(file); // Lê o arquivo como URL
     }
+});
+
+document.querySelector(".commentSubmitInput").addEventListener("click", async () => {
+    const CommentFuncs = new CommentsFunctions();
+    const postFocused = document.querySelector(".post-focused");
+    const postFocusedHeader = postFocused.firstElementChild;
+    const UserNick = postFocusedHeader.children[1].children[1].textContent.split("@")[1];
+
+    const metadata = postFocused.getAttribute("metadata");
+    const postId = JSON.parse(metadata).id;
+
+    const content = document.querySelector(".CommentContentInput").value;
+
+    const imageInput = document.getElementById("fileInput");
+    const file = imageInput.files[0];
+
+    const data = {
+        content,
+        postId,
+        author: UserNick,
+        file,
+    };
+
+    await CommentFuncs.doComment(data);
 });

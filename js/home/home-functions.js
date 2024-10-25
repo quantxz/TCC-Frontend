@@ -101,10 +101,9 @@ setTimeout(() => {
         const children = post.children;
         const DivPost = post.parentElement.parentElement.parentElement; 
 
-        console.log("\n", post.parentElement.parentElement.parentElement, "\n");
 
         Array.from(children).forEach(child => {
-            console.log(child.parentElement)
+            
             child.parentElement.addEventListener("click", () => {
                 document.querySelector(".comment-modal-container").id = "comment-modal-container"
                 document.querySelector(".post-focus").prepend(DivPost);
