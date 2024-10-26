@@ -19,30 +19,56 @@
     <link rel="stylesheet" href="../../CSS/home/container/main.css">
     <link rel="stylesheet" href="../../CSS/home/container/comments.li.css">
     <link rel="stylesheet" href="../../CSS/home/components/comment-modal.css">
+    <link rel="stylesheet" href="/TCC-Frontend/src/output.css">
+    <link rel="stylesheet" href="/TCC-Frontend/CSS/responsividade/Home.css">
     <script defer src="/js/global/userSettings.js"></script>
 </head>
 
 <body>
     <div class="container">
         <aside class="sidebar-left">
+
             <logo>
-                <img src="../../assets/logo-symbol.png" alt="">
+                <img src=" ../../assets/logo-symbol.png" id="Logo_roubado">
             </logo>
             <nav>
-                <ul>
-                    <li><a href="#" class="feed-section-link">Home</a></li>
+
+                <ul class="translate-x-[4vh] ">
+                    <img src="/TCC-Frontend/assets/icons/casa.png"
+                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh] ">
+                    <li><a href=" #" class="feed-section-link">Home</a></li>
+                    <img src="/TCC-Frontend/assets/icons/no-mundo-todo.png"
+                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="#" class="explore-section-link">Explore</a></li>
+                    <img src="/TCC-Frontend/assets/icons/sino-de-notificacao-nas-redes-sociais.png"
+                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="#" class="notifications">Notifications</a></li>
+                    <img src="/TCC-Frontend/assets/icons/bubble-chat (1).png"
+                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="../chat/chat.html">Messages</a></li>
+                    <img src="/TCC-Frontend/assets/icons/do-utilizador.png"
+                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <!-- talvel ? -->
                     <!-- <li><a href="#">Bookmarks</a></li> -->
-                    <li><a href="/HTML/perfil/perfil.html">Profile</a></li>
+                    <li><a href="/TCC-Frontend/HTML/perfil/perfil.html">Profile</a></li>
                 </ul>
+
+                <div id="Info-User"
+                    class="w-[24vh] h-[10vh] bg-blue-950 rounded-[10px] translate-y-[13rem] cursor-pointer">
+                    <div id="NickName-Info" class=" absolute left-[12vh] translate-y-[3vh]">
+                        <h1 class="font-mono text-1xl text-white">@quantxz</h1>
+                    </div>
+                    <div id="imagem-Info">
+
+
+                    </div>
+
+                </div>
             </nav>
 
         </aside>
 
-        <main class="feed">
+        <main class="feed ">
             <section class="feed-section" id="feed-section-active">
                 <div class="posts">
                 </div>
@@ -73,12 +99,13 @@
 
                             <h1 class="title">Comente o que pensou do post</h1>
                             <div class="inputs-container">
-                                <input placeholder="Comente" name=" text" type="text" id="textInput"  class="CommentContentInput"/>
+                                <input placeholder="Comente" name=" text" type="text" id="textInput"
+                                    class="CommentContentInput" />
                                 <input type="submit" value="Comentar" class="commentSubmitInput" required>
                             </div>
 
                             <div class="file">
-                                <input type="file" name=""  id="fileInput">
+                                <input type="file" name="" id="fileInput">
                                 <button>
                                     <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">

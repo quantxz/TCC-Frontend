@@ -1,0 +1,45 @@
+@media (min-width: 1366px) {
+    body {
+        transition: 1.2s;
+        background-color: rgb(0, 12, 29);
+    }
+
+    .feed {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: var(--bg-home-color);
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+    }
+
+    .sidebar-right {
+        transform: translateY(-3vh);
+        font-size: 1.90vh;
+
+    }
+
+    .who-to-follow {
+        position: relative;
+        top: 2rem;
+        left: 1vh;
+
+    }
+
+    nav {
+        transform: translateY(-7rem);
+    }
+
+    #Info-User {
+        transform: translateY(5vh);
+
+    }
+
+    #Logo_roubado {
+        width: 56%;
+        transform: translateX(-6rem);
+
+    }
+}

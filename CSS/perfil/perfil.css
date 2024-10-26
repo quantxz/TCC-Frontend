@@ -34,7 +34,7 @@ body {
 }
 
 .FotoPerfil {
-    background-image: url(/assets/Sem\ foto.avif);
+    background-image: url(/TCC-Frontend/assets/Sem\ foto.avif);
     width: 150px;
     height: 150px;
     background-size: cover;
@@ -43,7 +43,7 @@ body {
     align-items: center;
     border-radius: 100px;
     background-position: center;
-    
+
 }
 
 .profile-info {
@@ -215,9 +215,9 @@ body {
     color: black;
 }
 
-h2{
+h2 {
 
-color: white;
+    color: white;
 
 }
 
@@ -264,7 +264,7 @@ color: white;
     width: 250px;
     height: 250px;
     border-radius: 150px;
-    background-image: url(/assets/Sem\ foto.avif);
+    background-image: url(/TCC-Frontend/assets/Sem\ foto.avif);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -363,7 +363,7 @@ color: white;
     flex-direction: column;
     gap: 5vh;
     color: black;
-    
+
 }
 
 .Habilidades {
@@ -402,7 +402,7 @@ color: white;
         color: #000000;
         text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         opacity: 0.8;
-       
+
     }
 
     100% {
