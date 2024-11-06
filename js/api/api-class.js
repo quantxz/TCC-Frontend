@@ -146,6 +146,20 @@ class API extends ENV {
         }
     }
 
+    async explorePosts() {
+        try {
+            const response = await fetch(`http://localhost:3000/posts/famous/explore`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar posts');
+            }
+            const posts = await response.json();
+
+            return posts;
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
     async findUniquePost(id) {
         try {
             const response = await fetch(`http://localhost:3000/posts/post/${id}`);
@@ -263,7 +277,7 @@ class API extends ENV {
                 }
             });
             const responseData = await response.json();
-            
+
             if (responseData.postInfo.booleanValue == true) {
 
                 return true

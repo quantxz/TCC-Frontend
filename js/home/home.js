@@ -1,3 +1,5 @@
+let api;
+let homeFuncs;
 document.addEventListener("DOMContentLoaded", async () => {
     const nick = JSON.stringify(sessionStorage.getItem("userNickname"))
 
@@ -8,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     auth.loginAutenticator();
 
     const nickname = JSON.parse(nick)
-    const api = new API(ENV.authToken)
+    api = new API(ENV.authToken)
+    homeFuncs = new HomeFunctions()
     const result = await api.findUser(nickname)
     const userInfo = JSON.stringify(result.returnedData)
     sessionStorage.setItem("userInfo", userInfo)
@@ -41,10 +44,13 @@ closeModal.forEach(item => {
 const exploreSection = document.querySelector(".explore-section-link");
 const feedSection = document.querySelector(".feed-section-link");
 
-exploreSection.addEventListener("click", () => {
+exploreSection.addEventListener("click", async () => {
     document.querySelector(".explore-section").style.display = "block"
     document.querySelector(".feed-section").style.display = "none"
     document.querySelector(".sidebar-right").id = "sidebar-right-active"
+    
+    const explorePosts = await api.explorePosts();
+    homeFuncs.renderMostFamousPosts(explorePosts.mostViwedPosts)
 })
 
 feedSection.addEventListener("click", () => {
@@ -80,9 +86,6 @@ document.getElementById('file-input').addEventListener('change', function(event)
 
         reader.readAsDataURL(file);
 
-        console.log('File name:', file.name);
-        console.log('File size:', file.size);
-        console.log('File type:', file.type);
     }
 });
 
@@ -97,3 +100,49 @@ clearButton.addEventListener("click", () => {
     clearButton.style.display = "none"
 })
 
+document.querySelector(".closeCommentModal").addEventListener("click", () => {
+    document.querySelector(".comment-modal-container").id = ""
+})
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Cria uma nova imagem
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.maxWidth = '100%'; // Ajusta a largura da imagem
+
+            // Encontra o input de texto e substitui pelo elemento de imagem
+            const textInput = document.getElementById('textInput');
+            textInput.parentNode.insertBefore(img, textInput.nextSibling); // Adiciona a imagem após o input
+            img.classList.add("CommentImageContent")
+        };
+        reader.readAsDataURL(file); // Lê o arquivo como URL
+    }
+});
+
+document.querySelector(".commentSubmitInput").addEventListener("click", async () => {
+    const CommentFuncs = new CommentsFunctions();
+    const postFocused = document.querySelector(".post-focused");
+    const postFocusedHeader = postFocused.firstElementChild;
+    const UserNick = postFocusedHeader.children[1].children[1].textContent.split("@")[1];
+
+    const metadata = postFocused.getAttribute("metadata");
+    const postId = JSON.parse(metadata).id;
+
+    const content = document.querySelector(".CommentContentInput").value;
+
+    const imageInput = document.getElementById("fileInput");
+    const file = imageInput.files[0];
+
+    const data = {
+        content,
+        postId,
+        author: UserNick,
+        file,
+    };
+
+    await CommentFuncs.doComment(data);
+});

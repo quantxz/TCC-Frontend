@@ -43,7 +43,7 @@ body {
     align-items: center;
     border-radius: 100px;
     background-position: center;
-    
+
 }
 
 .profile-info {
@@ -215,9 +215,9 @@ body {
     color: black;
 }
 
-h2{
+h2 {
 
-color: white;
+    color: white;
 
 }
 
@@ -363,7 +363,7 @@ color: white;
     flex-direction: column;
     gap: 5vh;
     color: black;
-    
+
 }
 
 .Habilidades {
@@ -402,7 +402,7 @@ color: white;
         color: #000000;
         text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         opacity: 0.8;
-       
+
     }
 
     100% {

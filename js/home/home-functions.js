@@ -96,20 +96,25 @@ const posts = document.querySelectorAll(".posts");
 const postsComments = document.querySelectorAll(".commentsOfPost");
 
 setTimeout(() => {
-    //arrumar o bug
+    const CommentFuncs = new CommentsFunctions();
     document.querySelectorAll(".commentsOfPost").forEach(post => {
         const children = post.children;
-        const DivPost = post.parentElement.parentElement.parentElement;
-        console.log("\n", post.parentElement.parentElement.parentElement, "\n")
-        Array.from(children).forEach(child => {
+        const DivPost = post.parentElement.parentElement.parentElement; 
 
-            child.parentElement.addEventListener("click", () => {
+
+        Array.from(children).forEach(child => {
+            
+            child.parentElement.addEventListener("click", async () => {
+                document.querySelector(".comment-modal-container").id = "comment-modal-container"
                 document.querySelector(".post-focus").prepend(DivPost);
                 document.querySelector(".post-focus").id = "post-focus"
                 DivPost.classList.remove("post")
                 DivPost.classList.add("post-focused")
                 window.scrollTo(0, 500);
                 document.querySelector(".posts").style.display = "none"
+                const { id } = DivPost.getAttribute('metadata')
+                const comments = await CommentFuncs.getComments(id)
+                console.log(comments)
             })
         })
     });

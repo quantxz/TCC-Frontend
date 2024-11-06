@@ -3,6 +3,7 @@
     --bg-home-color: #010c1d;
     --bg-post-color: #f5f5f5e7;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +16,7 @@ body {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    transition: 1.5s;
 }
 
 .container {
