@@ -119,6 +119,11 @@ setTimeout(() => {
         })
     });
 
+    document.querySelectorAll(".commentLikeInput").forEach(input => {
+        input.addEventListener("change", () => {
+            apiClass.PostUnlike(data, unlikedTable);
+        })
+    })
 
     document.querySelectorAll(".likeCheckbox").forEach(input => {
         input.addEventListener('change', (e) => {

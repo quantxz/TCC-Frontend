@@ -382,4 +382,28 @@ class API extends ENV {
             console.error('Error in findLikedPost:', error);
         }
     }
+
+    async findLikedComment(data) {
+        try {
+            const response = await fetch(`${this.url}/posts/likedComments`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const responseData = await response.json();
+
+            if (responseData.postInfo.booleanValue == true) {
+
+                return true
+            } else {
+
+                return false
+            }
+
+        } catch (error) {
+            console.error('Error in findLikedPost:', error);
+        }
+    }
 }
