@@ -105,6 +105,7 @@ setTimeout(() => {
         Array.from(children).forEach(child => {
             
             child.parentElement.addEventListener("click", async () => {
+                console.log("foi")
                 document.querySelector(".comment-modal-container").id = "comment-modal-container"
                 document.querySelector(".post-focus").prepend(DivPost);
                 document.querySelector(".post-focus").id = "post-focus"
@@ -112,11 +113,62 @@ setTimeout(() => {
                 DivPost.classList.add("post-focused")
                 window.scrollTo(0, 500);
                 document.querySelector(".posts").style.display = "none"
-                const { id } = DivPost.getAttribute('metadata')
+                const { id } = JSON.parse(DivPost.getAttribute('metadata'))
                 const comments = await CommentFuncs.getComments(id)
-                console.log(comments)
             })
         })
     });
 
+
+    document.querySelectorAll(".likeCheckbox").forEach(input => {
+        input.addEventListener('change', (e) => {
+            const postElement = e.target.closest('.post-focused'); // Encontra o elemento pai com a classe 'post'
+            const title = postElement.querySelector('.title').textContent; // Recupera o título do post
+            const postContentContainer = postElement.querySelector('.post-content');
+            let content;
+            if (postContentContainer.querySelector('a')) {
+                content = postContentContainer.querySelector('a').href; // Recupera o href se for um link
+            }
+            else if (postContentContainer.querySelector('img')) {
+                content = postContentContainer.querySelector('img').src; // Recupera o src se for uma imagem
+            }
+            else {
+                content = postContentContainer.querySelector('p:last-child').textContent; // Recupera o texto se for um parágrafo
+            }
+            const userNickname = postElement.querySelector('.post-profile-infos p:last-child').textContent.slice(1); // Recupera o nickname do usuário
+            const metadata = postElement.getAttribute('metadata'); // Obtém o valor do atributo 'metadata'
+            const metadataObj = JSON.parse(metadata); // Converte a string JSON em um objeto JavaScript
+            const id = metadataObj.id; // Obtém o ID da metadata
+
+            const postLikesDiv = e.target.closest('.post-likes');
+            const likesMetadata = postLikesDiv.getAttribute('metadata');
+            const likesMetadataObj = JSON.parse(likesMetadata); // Converte a string JSON em um objeto JavaScript
+            console.log("metadata: " + likesMetadataObj)
+            //Dar um jeito do mesmo usuario não poder dar like duas vezes
+            const data = {
+                id,
+                title,
+                content,
+                userNickname
+            }
+
+            const likedTable = {
+                author: userNickname,
+                postId: id
+            }
+
+            if (e.target.checked) {
+                apiClass.PostLike(data, likedTable); // Envia os dados para a função PostLike
+            } else {
+                const postLikedId = likesMetadataObj.likedID; // Obtém o ID da metadata
+                const unlikedTable = {
+                    id: postLikedId,
+                    author: userNickname,
+                    postId: id
+                }
+
+                apiClass.PostUnlike(data, unlikedTable); // Envia os dados para a função PostUnlike
+            }
+        });
+    });
 }, 1000)

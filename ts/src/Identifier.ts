@@ -8,7 +8,7 @@ class Identifier {
     
     
     StartWith(url: string): boolean {
-        return url.startsWith("https://") || url.startsWith("http://");
+        return url.startsWith("https://") || url.startsWith("http://") || url.startsWith("C:");
     }
     
     

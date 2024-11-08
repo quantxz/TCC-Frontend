@@ -27,6 +27,10 @@
     }
 }
 
+.trends {
+    margin-top: 2.5rem;
+}
+
 .trends ul,
 .who-to-follow ul {
     list-style-type: none;

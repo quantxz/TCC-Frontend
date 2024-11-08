@@ -104,9 +104,11 @@ document.querySelector(".closeCommentModal").addEventListener("click", () => {
     document.querySelector(".comment-modal-container").id = ""
 })
 
+let selectedFile = null; // Variável para armazenar o arquivo selecionado
+
 document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
+    selectedFile = event.target.files[0]; // Armazena o arquivo na variável
+    if (selectedFile) {
         const reader = new FileReader();
         reader.onload = function(e) {
             // Cria uma nova imagem
@@ -117,9 +119,9 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             // Encontra o input de texto e substitui pelo elemento de imagem
             const textInput = document.getElementById('textInput');
             textInput.parentNode.insertBefore(img, textInput.nextSibling); // Adiciona a imagem após o input
-            img.classList.add("CommentImageContent")
+            img.classList.add("CommentImageContent");
         };
-        reader.readAsDataURL(file); // Lê o arquivo como URL
+        reader.readAsDataURL(selectedFile); // Lê o arquivo como URL
     }
 });
 
@@ -134,14 +136,11 @@ document.querySelector(".commentSubmitInput").addEventListener("click", async ()
 
     const content = document.querySelector(".CommentContentInput").value;
 
-    const imageInput = document.getElementById("fileInput");
-    const file = imageInput.files[0];
-
     const data = {
         content,
         postId,
         author: UserNick,
-        file,
+        file: selectedFile, // Adiciona o arquivo selecionado ao objeto data
     };
 
     await CommentFuncs.doComment(data);

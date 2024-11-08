@@ -8,7 +8,7 @@ var Identifier = /** @class */ (function () {
         ];
     }
     Identifier.prototype.StartWith = function (url) {
-        return url.startsWith("https://") || url.startsWith("http://");
+        return url.startsWith("https://") || url.startsWith("http://")  || url.startsWith("C:");
     };
     Identifier.prototype.EndWith = function (url) {
         var extension = this.ReadExtension(url);

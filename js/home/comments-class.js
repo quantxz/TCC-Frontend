@@ -5,16 +5,18 @@ class CommentsFunctions extends ENV{
         super()
     }
 
-    renderComments(comments) {
+    renderComments(comments, postID) {
         const ul = document.querySelector(".postCommentsUnorderList");
-        console.log(comments)
         // Limpa a lista antes de adicionar novos comentários, se necessário
         ul.innerHTML = '';
-    
+
         comments.comentarios.forEach(comment => {
             const listItem = document.createElement("li");
-    
             // Cria a estrutura HTML para o comentário
+            if(comment.postId !== postID) {
+                return;
+            }
+
             listItem.innerHTML = `
                 <div class="comment-header">
                     <div class="comment-profile-pic">
@@ -26,6 +28,7 @@ class CommentsFunctions extends ENV{
                     </div>
                 </div>
                 <div class="comment-content">
+                    ${this.identifier.Identifier(comment.image).image == "yes" ? '<img src=' + comment.image +' alt="PostContentImage">' : "<br>"}
                     <p>${comment.content}</p>
                 </div>
                 <div class="comment-footer">
@@ -76,11 +79,11 @@ class CommentsFunctions extends ENV{
      */
     async getComments(postId) {
         const response = await fetch(`${this.url}/posts/comments`, {
-            method: "GET",
+            method: "PATCH",
             body: postId
         }); 
         const comments = await response.json();
-        this.renderComments(comments);
+        this.renderComments(comments, postId);
         return comments;
     }
 }
