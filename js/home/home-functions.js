@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const posts = await apiClass.PostFind();
     functions.postsGenerator(posts).next();
     const likesInput = document.querySelectorAll('.checkbox');
-
+ 
     setTimeout(() => {
         likesInput.forEach(input => {
             input.addEventListener('change', (e) => {
