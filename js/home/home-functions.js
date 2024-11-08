@@ -115,6 +115,7 @@ setTimeout(() => {
                 document.querySelector(".posts").style.display = "none"
                 const { id } = JSON.parse(DivPost.getAttribute('metadata'))
                 const comments = await CommentFuncs.getComments(id)
+                
             })
         })
     });

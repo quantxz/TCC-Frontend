@@ -385,7 +385,7 @@ class API extends ENV {
 
     async findLikedComment(data) {
         try {
-            const response = await fetch(`${this.url}/posts/likedComments`, {
+            const response = await fetch(`${this.url}/posts/likedCommendtsPosts`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
