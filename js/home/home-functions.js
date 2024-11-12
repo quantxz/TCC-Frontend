@@ -97,28 +97,28 @@ const postsComments = document.querySelectorAll(".commentsOfPost");
 
 setTimeout(() => {
     const CommentFuncs = new CommentsFunctions();
+
     document.querySelectorAll(".commentsOfPost").forEach(post => {
-        const children = post.children;
-        const DivPost = post.parentElement.parentElement.parentElement; 
-
-
-        Array.from(children).forEach(child => {
-            
-            child.parentElement.addEventListener("click", async () => {
-                console.log("foi")
-                document.querySelector(".comment-modal-container").id = "comment-modal-container"
+        const DivPost = post.closest('.post'); // Aqui você encontra o post pai de forma eficiente
+        console.log(post)
+        // Adiciona um listener para o evento de clique no container de comentários
+        post.addEventListener("click", async (e) => {
+            // Verifica se o clique ocorreu dentro de um comentário
+                document.querySelector(".comment-modal-container").id = "comment-modal-container";
                 document.querySelector(".post-focus").prepend(DivPost);
-                document.querySelector(".post-focus").id = "post-focus"
-                DivPost.classList.remove("post")
-                DivPost.classList.add("post-focused")
+                document.querySelector(".post-focus").id = "post-focus";
+                DivPost.classList.remove("post");
+                DivPost.classList.add("post-focused");
                 window.scrollTo(0, 500);
-                document.querySelector(".posts").style.display = "none"
-                const { id } = JSON.parse(DivPost.getAttribute('metadata'))
-                const comments = await CommentFuncs.getComments(id)
-                
-            })
-        })
+                document.querySelector(".posts").style.display = "none";
+    
+                // Obtém o ID do post de dentro da metadata do post
+                const { id } = JSON.parse(DivPost.getAttribute('metadata'));
+                const comments = await CommentFuncs.getComments(id); // Chama a função uma única vez
+
+        });
     });
+    
 
     document.querySelectorAll(".commentLikeInput").forEach(input => {
         input.addEventListener("change", () => {
