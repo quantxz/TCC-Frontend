@@ -40,18 +40,8 @@ closeModal.forEach(item => {
     })
 })
 
-/*sections*/
-const exploreSection = document.querySelector(".explore-section-link");
 const feedSection = document.querySelector(".feed-section-link");
 
-exploreSection.addEventListener("click", async () => {
-    document.querySelector(".explore-section").style.display = "block"
-    document.querySelector(".feed-section").style.display = "none"
-    document.querySelector(".sidebar-right").id = "sidebar-right-active"
-    
-    const explorePosts = await api.explorePosts();
-    homeFuncs.renderMostFamousPosts(explorePosts.mostViwedPosts)
-})
 
 feedSection.addEventListener("click", () => {
     document.querySelector(".feed-section").style.display = "block"

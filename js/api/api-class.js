@@ -5,6 +5,18 @@ class API extends ENV {
     }
 
     buttonIsPressed = false;
+    async profileUpdate(a) {
+            const response = await fetch(`${this.url}/users-porfile/a`, {
+                method: "POST",
+                body: JSON.stringify(a),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": ENV.authToken
+                }
+            });
+
+            console.log(await response.json())
+    }
 
     //https://tcc-u2qf.onrender.com
     async loginRequest(username, password, email) {

@@ -79,3 +79,5 @@ ButtonPerfil.addEventListener("click", SeePersonalizaçao);
 ExitPersonalizaçao.addEventListener("click", ExitPerfil);
 TradeFoto.addEventListener("click", ImgPlay);
 document.getElementById('Salvar').addEventListener('click', TradeInfo);
+
+

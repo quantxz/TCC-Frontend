@@ -80,10 +80,6 @@
                 <li class="habilidade1"></li>
                 <li class="habilidade2"></li>
                 <li class="habilidade3"></li>
-                <li class="habilidade4"></li>
-
-
-
             </ul>
         </section>
         <section class="profile-projects">
@@ -103,29 +99,119 @@
                 <p>Descrição breve do Projeto 3. Inclui tecnologias usadas e objetivos do projeto.</p>
                 <a href="#" target="_blank">Ver Projeto</a>
             </div>
-
-        </section>
-        <section class="profile-posts">
-            <h2>Posts Recentes</h2>
-            <div class="post">
-                <img src="post1.jpg" alt="Post 1">
-                <p>Descrição do Post 1. Pode incluir artigos, tutoriais ou insights.</p>
-            </div>
-            <div class="post">
-                <img src="post2.jpg" alt="Post 2">
-                <p>Descrição do Post 2. Pode incluir artigos, tutoriais ou insights.</p>
-            </div>
-            <div class="post">
-                <img src="post3.jpg" alt="Post 3">
-                <p>Descrição do Post 3. Pode incluir artigos, tutoriais ou insights.</p>
-            </div>
-
+            <button id="fds"></button>
         </section>
     </div>
+    <script src="../../js/gen/env/env.js"></script>
+    <script src="../../js/api/api-class.js"></script>
     <script src="/js/perfil/perfil.js"></script>
     <script src="/js/perfil/Potifolio.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>m
+    <script>
+
+        const api = new API();
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Obtenha o apelido do usuário a partir do sessionStorage
+            const nick = sessionStorage.getItem("userNickname");
+            // Realize a requisição para pegar os repositórios do GitHub
+            const projs = await fetch(`https://api.github.com/users/${nick}/repos`);
+            const projects = await projs.json();
+
+            // Chame o método findUser para pegar os dados do usuário
+            const res = await api.findUser(nick);
+
+            // Verifique se a resposta contém dados
+            if (res && res.returnedData) {
+                const user = res.returnedData;
+
+                // Preenche os campos do formulário com os dados do usuário
+                document.getElementById("Name").value = user.name;  // Nome
+                document.querySelector(".UsernameTXT").innerHTML = "@" + user.nickname;  // Apelido
+                document.getElementById("Bio").value = user.bio;  // Bio
+
+                // Preenche as habilidades
+                const skillsArray = user.skills ? user.skills.split(',') : [];
+                const skillFields = ["habilidade1", "habilidade2", "habilidade3", "habilidade4"];
+                skillFields.forEach((field, index) => {
+                    if (skillsArray[index]) {
+                        document.querySelector(`.${field}`).textContent = skillsArray[index].trim();
+                    }
+                });
+
+                // Exibe a imagem de perfil
+                const imgPerfil = document.querySelector(".FotoPerfil");
+                imgPerfil.style = "background: none";
+                imgPerfil.innerHTML = `<img src="${user.profilePic}" alt="Foto de perfil" style="width: 100px; height: 100px; border-radius: 50%;">`;
+            } else {
+                console.error("Não foi possível carregar os dados do usuário.");
+            }
+
+            // Agora, preenche a seção de projetos
+            if (projects.length > 0) {
+                // Itera sobre os projetos e preenche o conteúdo
+                const projectItems = document.querySelectorAll(".project-item");
+
+                projects.forEach((project, index) => {
+                    if (index < projectItems.length) {  // Garante que não há excesso de projetos
+                        const projectItem = projectItems[index];
+
+                        const projectTitle = projectItem.querySelector("h3");
+                        const projectDescription = projectItem.querySelector("p");
+                        const projectLink = projectItem.querySelector("a");
+
+                        // Preenche os detalhes do projeto
+                        projectTitle.textContent = project.name;  // Nome do projeto
+                        projectDescription.textContent = project.description || "Sem descrição";  // Descrição do projeto
+                        projectLink.href = project.html_url;  // Link para o projeto
+                        projectLink.textContent = "Ver Projeto";  // Texto do link
+                    }
+                });
+            } else {
+                console.log("Nenhum projeto encontrado.");
+            }
+        });
+        document.getElementById("fds").addEventListener("click", async (e) => {
+            const nick = JSON.stringify(sessionStorage.getItem("userNickname"));
+            const nickname = JSON.parse(nick);
+            const res = await api.findUser(nickname)
+            console.log(res)
+            e.preventDefault();
+
+            // Capturando os dados do formulário
+            const name = document.getElementById("Name").value;
+            const username = document.getElementById("Username").value;
+            const bio = document.getElementById("Bio").value;
+            const imgInput = document.getElementById("IMG-Input").files[0];  // Captura o arquivo de imagem
+
+            // Criando um novo FormData
+            const formData = new FormData();
+            formData.append("userId", res.returnedData.id);
+            formData.append("bio", bio);
+            formData.append("file", imgInput);  // Arquivo de imagem com nome 'file'
+
+            // Adicionando um campo com os skills (exemplo de como você pode adicionar mais dados)
+            const skills = "JavaScript, React, Node.js";  // Exemplo de habilidades
+            formData.append("skills", skills);
+
+            // Enviando a requisição para o back-end
+            try {
+                const response = await fetch("http://127.0.0.1:3000/users-profile/a", {
+                    method: "POST",
+                    body: formData,  // Usando FormData
+                });
+
+                // Mostra a resposta do servidor
+                const result = await response.json();
+                console.log(result);  // Loga o resultado da resposta do servidor
+            } catch (error) {
+                console.error("Erro ao enviar dados:", error);
+            }
+        });
+
+    </script>
+
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
