@@ -9,62 +9,38 @@
 </head>
 
 <body>
-    <div class="Conteiner-Perfil ">
+    <div class="Conteiner-Perfil">
         <div class="edit-perfil">
             <hr>
-            <h1 class="title-Perfil">Personalizaçao de conta</h1>
-            <!-- personalizaçao de perfil -->
-            <label for="Nome"> Digite seu novo Nome:</label>
+            <h1 class="title-Perfil">Personalização de conta</h1>
+            <!-- personalização de perfil -->
+            <label for="Nome">Digite seu novo Nome:</label>
             <input type="text" name="Nome" id="Name" placeholder="Digite seu nome"><br>
             <label for="user">Digite seu novo apelido:</label>
             <input type="text" name="User" id="Username" placeholder="Digite seu Username" required="@"><br>
             <label for="Bio">Bio:</label>
-            <input type="text" name="Bio" id="Bio" placeholder="sua bio">
+            <input type="text" name="Bio" id="Bio" placeholder="Sua bio"><br>
+
+            <!-- Campos para habilidades -->
+            <label for="Habilidades">Habilidades:</label><br>
+            <input type="text" id="HAB1" placeholder="Digite sua primeira habilidade"><br>
+            <input type="text" id="HAB2" placeholder="Digite sua segunda habilidade"><br>
+            <input type="text" id="HAB3" placeholder="Digite sua terceira habilidade"><br>
+
             <input type="file" name="IMG-perfil" id="IMG-Input">
             <button id="IMG-Edit">Foto De Perfil</button>
             <button id="Salvar">Salvar</button>
-            <!-- personalizaçao de perfil -->
-
+            <!-- personalização de perfil -->
         </div>
         <div>
             <button id="Sair-personalizaçao">X</button>
         </div>
-        <div Class="MulduraImg">
-
-
-        </div>
     </div>
-    <!-- personalizaçao de portifolio -->
-    <div class="Conteiner-Portifolio">
-        <div class="edit-portifolio">
-            <h1 class="Portifolio-Title">
-                <button id="Sair-Portifolio">X</button>
-                Personalizaçao De Portifolio
-            </h1><br>
-            <div class="Section-Portifolio">
-                <h1 class="Habilidades">
-                    Habilidades:
-                </h1>
-                <label for="HAB1">LINGUAGEMS:</label>
-                <input type="text" name="HAB1" placeholder="digite sua linguagem de trabalho" id="LINGUA">
-                <label for="HAB1">EXPERIENCIA PROFISSIONAL:</label>
-                <input type="text" name="HAB2" placeholder="Experiencia profissional" id="Experiencia">
-                <label for=" HAB1">EXPECIALIDADE:</label>
-                <input type="text" name="HAB3" placeholder="Fronte-end, Back-end, fullstack" id="EXPECIALIDADE">
-                <label for="HAB1">NIVEL:</label>
-                <input type="text" name="HAB4" placeholder="Junior,Pleno,Senior" id="NIVEL">
-                <button id="Salvar-portifolio">Salvar</button>
-            </div>
-        </div>
-    </div>
-    <!-- info-Portifolio -->
+
     <div class="profile-container">
         <header class="profile-header">
             <div class="profile-picture">
-                <div class="FotoPerfil">
-
-                </div>
-
+                <div class="FotoPerfil"></div>
             </div>
             <div class="profile-info">
                 <h1 class="NomeTXT"></h1>
@@ -82,133 +58,104 @@
                 <li class="habilidade3"></li>
             </ul>
         </section>
-        <section class="profile-projects">
-            <h2>Projetos:</h2>
-            <div class="project-item">
-                <h3>Projeto 1</h3>
-                <p>Descrição breve do Projeto 1. Inclui tecnologias usadas e objetivos do projeto.</p>
-                <a href="#" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-item">
-                <h3>Projeto 2</h3>
-                <p>Descrição breve do Projeto 2. Inclui tecnologias usadas e objetivos do projeto.</p>
-                <a href="#" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-item">
-                <h3>Projeto 3</h3>
-                <p>Descrição breve do Projeto 3. Inclui tecnologias usadas e objetivos do projeto.</p>
-                <a href="#" target="_blank">Ver Projeto</a>
-            </div>
-            <button id="fds"></button>
-        </section>
     </div>
+
     <script src="../../js/gen/env/env.js"></script>
     <script src="../../js/api/api-class.js"></script>
     <script src="/js/perfil/perfil.js"></script>
     <script src="/js/perfil/Potifolio.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
 
+    <script>
         const api = new API();
 
         document.addEventListener("DOMContentLoaded", async () => {
-            // Obtenha o apelido do usuário a partir do sessionStorage
             const nick = sessionStorage.getItem("userNickname");
-            // Realize a requisição para pegar os repositórios do GitHub
             const projs = await fetch(`https://api.github.com/users/${nick}/repos`);
             const projects = await projs.json();
 
-            // Chame o método findUser para pegar os dados do usuário
             const res = await api.findUser(nick);
-
-            // Verifique se a resposta contém dados
             if (res && res.returnedData) {
                 const user = res.returnedData;
 
-                // Preenche os campos do formulário com os dados do usuário
-                document.getElementById("Name").value = user.name;  // Nome
-                document.querySelector(".UsernameTXT").innerHTML = "@" + user.nickname;  // Apelido
-                document.getElementById("Bio").value = user.bio;  // Bio
+                document.getElementById("Name").value = user.name;
+                document.querySelector(".UsernameTXT").innerHTML = "@" + user.nickname;
+                document.getElementById("Bio").value = user.bio;
 
-                // Preenche as habilidades
                 const skillsArray = user.skills ? user.skills.split(',') : [];
-                const skillFields = ["habilidade1", "habilidade2", "habilidade3", "habilidade4"];
+                const skillFields = ["habilidade1", "habilidade2", "habilidade3"];
                 skillFields.forEach((field, index) => {
                     if (skillsArray[index]) {
                         document.querySelector(`.${field}`).textContent = skillsArray[index].trim();
                     }
                 });
 
-                // Exibe a imagem de perfil
+                // Verificar se a div .FotoPerfil existe antes de tentar manipular
                 const imgPerfil = document.querySelector(".FotoPerfil");
-                imgPerfil.style = "background: none";
-                imgPerfil.innerHTML = `<img src="${user.profilePic}" alt="Foto de perfil" style="width: 100px; height: 100px; border-radius: 50%;">`;
+                if (imgPerfil) {  // Verifique se imgPerfil existe
+                    if (user.profilePic && user.profilePic !== "") {
+                        imgPerfil.style = "background: none";  // Se a imagem de perfil existir
+                        imgPerfil.innerHTML = `<img src="${user.profilePic}" alt="Foto de perfil" style="width: 100px; height: 100px; border-radius: 50%;">`;
+                    }
+                } else {
+                    console.error(".FotoPerfil não encontrado.");
+                }
             } else {
                 console.error("Não foi possível carregar os dados do usuário.");
             }
 
-            // Agora, preenche a seção de projetos
             if (projects.length > 0) {
-                // Itera sobre os projetos e preenche o conteúdo
                 const projectItems = document.querySelectorAll(".project-item");
-
                 projects.forEach((project, index) => {
-                    if (index < projectItems.length) {  // Garante que não há excesso de projetos
+                    if (index < projectItems.length) {
                         const projectItem = projectItems[index];
-
                         const projectTitle = projectItem.querySelector("h3");
                         const projectDescription = projectItem.querySelector("p");
                         const projectLink = projectItem.querySelector("a");
 
-                        // Preenche os detalhes do projeto
-                        projectTitle.textContent = project.name;  // Nome do projeto
-                        projectDescription.textContent = project.description || "Sem descrição";  // Descrição do projeto
-                        projectLink.href = project.html_url;  // Link para o projeto
-                        projectLink.textContent = "Ver Projeto";  // Texto do link
+                        projectTitle.textContent = project.name;
+                        projectDescription.textContent = project.description || "Sem descrição";
+                        projectLink.href = project.html_url;
+                        projectLink.textContent = "Ver Projeto";
                     }
                 });
-            } else {
-                console.log("Nenhum projeto encontrado.");
             }
         });
-        document.getElementById("fds").addEventListener("click", async (e) => {
-            const nick = JSON.stringify(sessionStorage.getItem("userNickname"));
-            const nickname = JSON.parse(nick);
-            const res = await api.findUser(nickname)
-            console.log(res)
+        
+        
+        document.getElementById("Salvar").addEventListener("click", async (e) => {
             e.preventDefault();
-
-            // Capturando os dados do formulário
+            
             const name = document.getElementById("Name").value;
             const username = document.getElementById("Username").value;
             const bio = document.getElementById("Bio").value;
-            const imgInput = document.getElementById("IMG-Input").files[0];  // Captura o arquivo de imagem
+            const hab1 = document.getElementById("HAB1").value;
+            const hab2 = document.getElementById("HAB2").value;
+            const hab3 = document.getElementById("HAB3").value;
+            const imgInput = document.getElementById("IMG-Input").files[0];
+            const nick = sessionStorage.getItem("userNickname");
+            const user = await api.findUser(nick)
 
-            // Criando um novo FormData
             const formData = new FormData();
-            formData.append("userId", res.returnedData.id);
+            formData.append("name", name);
+            formData.append("userId", user.returnedData.id);
+            formData.append("username", username);
             formData.append("bio", bio);
-            formData.append("file", imgInput);  // Arquivo de imagem com nome 'file'
+            formData.append("skills", `${hab1}, ${hab2}, ${hab3}`); // Habilidades
+            if (imgInput) formData.append("file", imgInput);
 
-            // Adicionando um campo com os skills (exemplo de como você pode adicionar mais dados)
-            const skills = "JavaScript, React, Node.js";  // Exemplo de habilidades
-            formData.append("skills", skills);
-
-            // Enviando a requisição para o back-end
             try {
                 const response = await fetch("http://127.0.0.1:3000/users-profile/a", {
                     method: "POST",
-                    body: formData,  // Usando FormData
+                    body: formData,
                 });
 
-                // Mostra a resposta do servidor
                 const result = await response.json();
-                console.log(result);  // Loga o resultado da resposta do servidor
+                console.log(result);
             } catch (error) {
                 console.error("Erro ao enviar dados:", error);
             }
         });
-
     </script>
 
     <script>

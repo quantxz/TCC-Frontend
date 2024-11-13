@@ -38,23 +38,6 @@ let ImgPlay = () => {
     InputTrade.click();
 };
 
-// Função para atualizar a imagem de perfil
-InputTrade.addEventListener("change", function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.querySelector('.MulduraImg').style.backgroundImage = `url(${e.target.result})`;
-            document.querySelector('.FotoPerfil').style.backgroundImage = `url(${e.target.result})`;
-
-            document.querySelector('.MulduraImg').textContent = '';
-            document.querySelector('.FotoPerfil').textContent = '';
-        };
-
-        reader.readAsDataURL(file);
-    }
-});
 
 // Função para atualizar o nome, username e bio
 const TradeInfo = () => {

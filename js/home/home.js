@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     api = new API(ENV.authToken)
     homeFuncs = new HomeFunctions()
     const result = await api.findUser(nickname)
+    document.querySelector("#imagem-Info").style = `background-image: url(${result.returnedData.profilePic});`
+    document.querySelector(".userNickInCube").innerHTML = `@${nickname}`
     const userInfo = JSON.stringify(result.returnedData)
     sessionStorage.setItem("userInfo", userInfo)
 })

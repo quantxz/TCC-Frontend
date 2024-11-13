@@ -34,7 +34,8 @@ class HomeFunctions {
         postElement.setAttribute('data-likes', data.likes || 0);
         const response = this.identifier.Identifier(data.content);
         let content = '';
-
+        const user = await this.apiClass.findUser(data.author);
+        
         if (response.type == "link" && response.image == "no") {
             content = `<a href="${data.content}">${data.content}</a>`;
         } else if (response.type == "link" && response.image == "yes") {
@@ -53,7 +54,7 @@ class HomeFunctions {
         postElement.innerHTML = `
             <div class="post-header">
                 <div class="post-profile-pic">
-                    <img src="/assets/download.png" alt="">
+                    <img src="${user.returnedData.profilePic}" alt="">
                 </div>
                 <div class="post-profile-infos">
                     <p>${data.authorName ? data.authorName : "undefined"}</p>

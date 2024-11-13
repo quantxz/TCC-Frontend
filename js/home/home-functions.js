@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const metadata = postElement.getAttribute('metadata'); // Obtém o valor do atributo 'metadata'
                 const metadataObj = JSON.parse(metadata); // Converte a string JSON em um objeto JavaScript
                 const id = metadataObj.id; // Obtém o ID da metadata
-
+                
                 const postLikesDiv = e.target.closest('.post-likes');
                 const likesMetadata = postLikesDiv.getAttribute('metadata');
                 const likesMetadataObj = JSON.parse(likesMetadata); // Converte a string JSON em um objeto JavaScript
