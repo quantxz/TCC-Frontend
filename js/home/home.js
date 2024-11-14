@@ -6,9 +6,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const includer = new Include;
     includer.ReadHTML("import");
 
-    const auth = new UserAutenticator();
-    auth.loginAutenticator();
-
     const nickname = JSON.parse(nick)
     api = new API(ENV.authToken)
     homeFuncs = new HomeFunctions()

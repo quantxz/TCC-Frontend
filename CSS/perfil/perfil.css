@@ -60,11 +60,6 @@ body {
     color: #666;
 }
 
-.bio {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #333;
-}
 
 .social-links a {
     margin-right: 15px;
@@ -187,6 +182,12 @@ body {
     color: white;
 }
 
+#HAB1,
+#HAB2,
+#HAB3 {
+    color: #000000;
+}
+
 #Username {
     width: 30%;
     height: 5vh;
@@ -210,7 +211,7 @@ body {
     position: relative;
     top: .2vh;
     width: 94%;
-    height: 20%;
+    height: 50rem;
     left: 2vh;
     color: black;
 }
@@ -276,7 +277,7 @@ h2 {
     width: 20%;
     padding: 1vh;
     position: absolute;
-    top: 21rem;
+    top: 17rem;
     left: 62vh;
     border: 0px solid;
     background-color: #004e97;
@@ -412,3 +413,13 @@ h2 {
         opacity: 1;
     }
 }
+
+#imgPreviewContainer {
+    position: absolute;
+    top: 2rem;
+    left: 65%;
+    width: 11rem;
+    height: 11.5vh;
+    border-radius: 50%;
+}
+
