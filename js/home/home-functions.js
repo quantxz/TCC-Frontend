@@ -128,8 +128,9 @@ setTimeout(() => {
 
     document.querySelectorAll(".likeCheckbox").forEach(input => {
         input.addEventListener('change', (e) => {
-            const postElement = e.target.closest('.post-focused'); // Encontra o elemento pai com a classe 'post'
-            const title = postElement.querySelector('.title').textContent; // Recupera o título do post
+            const postElement = e.target.closest('.post') ?? e.target.closest('.post-focused');
+            if (!postElement) return;
+            const title = postElement.querySelector('.title').textContent || ""; // Recupera o título do post
             const postContentContainer = postElement.querySelector('.post-content');
             let content;
             if (postContentContainer.querySelector('a')) {

@@ -2,7 +2,6 @@ let api;
 let homeFuncs;
 document.addEventListener("DOMContentLoaded", async () => {
     const nick = JSON.stringify(sessionStorage.getItem("userNickname"))
-
     const includer = new Include;
     includer.ReadHTML("import");
 

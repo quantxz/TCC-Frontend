@@ -96,8 +96,9 @@ class API extends ENV {
                 });
 
                 const data = await response.json();
-
                 window.location.href = "../../html/home/home.html";
+                sessionStorage.setItem("userNickname", nickname)
+                sessionStorage.setItem("user", JSON.stringify(data.returnedData))
             } catch (error) {
                 console.error("Erro na requisição:", error);
                 // Lidar com erro na requisição
