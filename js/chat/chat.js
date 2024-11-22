@@ -98,13 +98,8 @@ form.addEventListener("submit", (e) => {
     };
 
     currentMessages.push(messageToArray)
+    chatFuncs.saveMessages(messageToArray)
 });
-
-// setInterval(() => {
-//     chatFuncs.saveMessages(currentMessages);
-//     currentMessages = [];
-// }, 600)
-
 
 contacts.forEach(contact => {
     removeSelectedFromOthers(contact);
@@ -148,8 +143,6 @@ contacts.forEach(contact => {
         }
     });
 });
-
-
 
 check.addEventListener("change", () => {
     if(check.checked) {
