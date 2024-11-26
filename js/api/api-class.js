@@ -99,6 +99,7 @@ class API extends ENV {
                 window.location.href = "../../html/home/home.html";
                 sessionStorage.setItem("userNickname", nickname)
                 sessionStorage.setItem("user", JSON.stringify(data.returnedData))
+                sessionStorage.setItem("userInfo", JSON.stringify(data.returnedData))
             } catch (error) {
                 console.error("Erro na requisição:", error);
                 // Lidar com erro na requisição
@@ -213,6 +214,7 @@ class API extends ENV {
 
 
                 /* Atualiza se o post foi marcado com like ou não no backend*/
+                console.log(data)
                 const postLikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=like`, {
                     method: "PATCH",
                     body: JSON.stringify(likedPostsData),
@@ -228,6 +230,9 @@ class API extends ENV {
                 }
 
                 const postLiked = await response.json();
+                const { postInfo } = await postLikedTable.json()
+                document.getElementById(`postInputCheckId${postInfo.postId}`).setAttribute("metadata", JSON.stringify({ likedID: postInfo.id }));
+                document.getElementById(`UniqueValueIdentifier${postInfo.postId}`).setAttribute("metadata", JSON.stringify({ likedID: postInfo.id }));
                 return postLiked;
 
             }
@@ -280,98 +285,6 @@ class API extends ENV {
         }
     }
 
-    async CommentLike(data, likedPostsData) {
-
-        try {
-
-            if (this.buttonIsPressed === false) {
-
-                /* isso aqui vai dar merda no futuro, mas por hora serve, por gentileza não tocar em nada que envolva este trecho de codigo*/
-                this.buttonIsPressed = true;
-                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
-
-                setTimeout(() => {
-                    this.buttonIsPressed = false
-                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
-                }, 1500)
-
-                const response = await fetch(`http://localhost:3000/posts/likes?type=Comment&reqType=like`, {
-                    method: "PATCH",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-
-
-                /* Atualiza se o post foi marcado com like ou não no backend*/
-                const postLikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=like`, {
-                    method: "PATCH",
-                    body: JSON.stringify(likedPostsData),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-
-                functions.updatePost(data.id)
-
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar posts');
-                }
-
-                const postLiked = await response.json();
-                return postLiked;
-
-            }
-
-        } catch (error) {
-            console.error('Erro na requisição:', error);
-        }
-    }
-
-    async CommentUnlike(data, likedPostsData) {
-        try {
-
-
-            if (this.buttonIsPressed === false) {
-
-                this.buttonIsPressed = true;
-                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
-
-                setTimeout(() => {
-                    this.buttonIsPressed = false
-                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
-                }, 1500)
-
-                const response = await fetch(`http://localhost:3000/posts/likes?type=Comment&reqType=unlike`, {
-                    method: "PATCH",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-                const postUnlikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=unlike`, {
-                    method: "PATCH",
-                    body: JSON.stringify(likedPostsData),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-
-                functions.updatePost(data.id)
-
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar posts\n');
-                }
-                const postUnliked = await response.json();
-                return postUnliked;
-            }
-
-        } catch (error) {
-            console.error('Erro na requisição:', error, "\n");
-        }
-    }
-
     async findLikedPost(data) {
         try {
             const response = await fetch(`${this.url}/posts/likedPosts`, {
@@ -382,7 +295,6 @@ class API extends ENV {
                 }
             });
             const responseData = await response.json();
-
             if (responseData.postInfo.booleanValue == true) {
 
                 return true

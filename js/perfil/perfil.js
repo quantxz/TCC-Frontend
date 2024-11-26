@@ -42,18 +42,9 @@ let ImgPlay = () => {
 // Função para atualizar o nome, username e bio
 const TradeInfo = () => {
     let newName = InputNome.value;
-    let newUsername = InputUsername.value;
     let newBio = InputBio.value;
 
-
-    if (!newUsername.startsWith('@')) {
-        alert('O username deve começar com "@"');
-        return; // Não continua a execução da função
-    }
-
-
     Name.textContent = newName;
-    Username.textContent = newUsername;
     Bio.textContent = newBio;
 };
 

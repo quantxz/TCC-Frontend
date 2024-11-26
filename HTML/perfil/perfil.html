@@ -16,8 +16,6 @@
             <!-- personalização de perfil -->
             <label for="Nome">Digite seu novo Nome:</label>
             <input type="text" name="Nome" id="Name" placeholder="Digite seu nome"><br>
-            <label for="user">Digite seu novo apelido:</label>
-            <input type="text" name="User" id="Username" placeholder="Digite seu Username" required="@"><br>
             <label for="Bio">Bio:</label>
             <input type="text" name="Bio" id="Bio" placeholder="Sua bio"><br>
 
@@ -133,7 +131,6 @@
             e.preventDefault();
 
             const name = document.getElementById("Name").value;
-            const username = document.getElementById("Username").value;
             const bio = document.getElementById("Bio").value;
             const hab1 = document.getElementById("HAB1").value;
             const hab2 = document.getElementById("HAB2").value;
@@ -145,7 +142,6 @@
             const formData = new FormData();
             formData.append("name", name);
             formData.append("userId", user.returnedData.id);
-            formData.append("username", username);
             formData.append("bio", bio);
             formData.append("skills", `${hab1}, ${hab2}, ${hab3}`); // Habilidades
             if (imgInput) formData.append("file", imgInput);
@@ -161,6 +157,7 @@
             } catch (error) {
                 console.error("Erro ao enviar dados:", error);
             }
+            window.location.href = "/HTML/perfil/perfil.html"
         });
 
 

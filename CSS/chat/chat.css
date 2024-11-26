@@ -371,10 +371,9 @@ main>.chat>.chatForm>.input {
 
 }
 
-#myMessage .userInChatInfos>.userInChatName {
+#myMessage .userInChatInfos >.userInChatName {
     position: absolute;
-    right: 5rem;
-
+    left: -0.5rem;
 }
 
 

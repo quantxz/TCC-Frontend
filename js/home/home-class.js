@@ -54,11 +54,11 @@ class HomeFunctions {
         postElement.innerHTML = `
             <div class="post-header">
                 <div class="post-profile-pic">
-                    <img src="${user.returnedData.profilePic}" alt="">
+                    <a href="/HTML/perfil/perfil.html"><img src="${user.returnedData.profilePic}" alt=""></a>
                 </div>
                 <div class="post-profile-infos">
-                    <p>${data.authorName ? data.authorName : "undefined"}</p>
-                    <p>@${data.author}</p>
+                    <a href="/HTML/perfil/perfil.html"><p>${data.authorName ? data.authorName : "undefined"}</p></a>
+                    <a href="/HTML/perfil/perfil.html"><p class="nickdoautordaporradodopost">@${data.author}</p></a>
                 </div>
                 <div class="post-options-header">
                 </div>
@@ -106,7 +106,7 @@ class HomeFunctions {
 
         const allPosts = Array.from(postsContainer.querySelectorAll('.post'));
         const postLikesDiv = document.querySelectorAll('.post-likes');
-        /*invertigar se nã9o tem a ver com o momento ou a hierarquia em que renderizo o metadata do item*/
+
         postLikesDiv.forEach(item => {
             const likedId = data.attributes.likedPostMetadata ? data.attributes.likedPostMetadata.id : null;
             if (likedId) {

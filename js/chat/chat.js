@@ -12,7 +12,17 @@ const groups = document.querySelector(".groups");
 const searchBar = document.querySelector(".searchBar");
 const menu = document.querySelector(".menuOptions");
 const chatFuncs = new chatFunctions();
+const api = new API();
+
+api.findUser(nickname)
+document.addEventListener("DOMContentLoaded", async () => {
+    const response = await api.findUser(nickname) 
+    console.log(response.returnedData)
+    document.querySelector(".profilePic").style = `background-image: url(${response.returnedData.profilePic !== "" ? response.returnedData.profilePic : "/assets/6326055-removebg-preview.png"});`
+})
 let currentMessages = [];
+let messagesLoade = false;
+let selectedChat = false;
 
 // Função para inicializar o socket
 function initSocket(room) {
@@ -34,7 +44,7 @@ function initSocket(room) {
 let socket = initSocket(room);
 
 function render(data) {
-    
+
     const message = document.createElement("div");
     message.className = "message";
 
@@ -60,7 +70,7 @@ function render(data) {
         message.id = "myMessage";
     }
 
-    if(data.hasOwnProperty('id')) {
+    if (data.hasOwnProperty('id')) {
         message.setAttribute('metadata', JSON.stringify(data));
     }
 
@@ -98,18 +108,18 @@ form.addEventListener("submit", (e) => {
     };
 
     currentMessages.push(messageToArray)
-    chatFuncs.saveMessages(messageToArray)
 });
 
 contacts.forEach(contact => {
     removeSelectedFromOthers(contact);
+    console.log(room)
     contact.addEventListener("click", async (e) => {
 
-        const newRoom = contact.getAttribute("room");
-        contact.id = "chatSelected";
-        removeSelectedFromOthers(contact);
-
-        if (newRoom && newRoom !== room) {
+            const newRoom = contact.getAttribute("room");
+            contact.id = "chatSelected";
+            // removeSelectedFromOthers(contact);
+    
+    
             // Atualiza a room
             room = newRoom;
 
@@ -132,20 +142,27 @@ contacts.forEach(contact => {
             messagesDiv.innerHTML = '';
             socket.emit("find_messages", room)
 
+            console.log(messagesLoade)
+
             socket.on('all_messages', (messages) => {
-                for(const message of messages) {
-                    render(message)
+                for (const message of messages) {
+                    if (messagesLoade == false) {
+                        render(message)
+                    }
                 }
                 for (const message of currentMessages) {
-                    render(message)
+                    if (messagesLoade == false) {
+                        render(message)
+                    }
                 }
+                messagesLoade = true;
             });
-        }
     });
+
 });
 
 check.addEventListener("change", () => {
-    if(check.checked) {
+    if (check.checked) {
         groups.style = "display: flex;"
         groups.id = "groupsById"
 

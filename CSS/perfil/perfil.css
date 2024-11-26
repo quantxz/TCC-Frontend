@@ -34,9 +34,9 @@ body {
 }
 
 .FotoPerfil {
-    background-image: url(/assets/Sem\ foto.avif);
-    width: 150px;
-    height: 150px;
+    background-image: url(http://localhost:3000/default.avif);
+    width: 100px;
+    height: 100px;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
