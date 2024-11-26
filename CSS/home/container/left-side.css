@@ -1,0 +1,111 @@
+:root {
+    --dynamic-hover-bg-color: #f00;
+}
+
+logo {
+    display: flex;
+    position: relative;
+    width: 15vw;
+    height: 25vh;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+logo img {
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 110;
+    color: rgb(22, 194, 194);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 60%;
+    width: 100%;
+    height: 10vh;
+    border-radius: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.profile-container:hover {
+    background-color: var(--dynamic-hover-bg-color);
+    box-shadow: 1px 1px 5px 5px #00000025;
+    transition: 1.7s;
+}
+
+.profile-container .profile-pic {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    left: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-container .profile-pic img {
+    aspect-ratio: 3/2;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+}
+
+.profile-container .profile-infos {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    left: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-container .profile-infos p {
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.profile-container .profile-infos p+p {
+    margin-top: 5px;
+}
+
+#imagem-Info {
+    background-image: url(/assets/negao\ sorrindo.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    width: 40%;
+    height: 95%;
+    transform: translatey(2px);
+    margin: 5px;
+
+}

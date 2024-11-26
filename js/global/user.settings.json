@@ -1,0 +1,49 @@
+{
+    "userColors": {
+        "bgColor": "standart",
+        "txtColor": "standart",
+        "mainColor": "standart",
+        "subColor": "standart",
+        "specifiedColors": {
+            "homePage": {
+                "bgColor": "standart",
+                "subColor": "standart",
+                "txtColor": "standart",
+                "homeModalsColors": {
+                    "notifieModalColors": {
+                        "txtColor": "",
+                        "bgColor": ""                       
+                    },
+                    "postModalColors": {
+                        "txtColor": "",
+                        "bgColor": "",
+                        "inputBgColor": "",
+                        "inputBoderColor": "",
+                        "inputBorderShadowColor": ""  
+                    }
+                }
+            }, 
+            "chatPage": {
+                "leftMenuColor": "",
+                "contactsColors": {
+                    "contactsBgColor": "",
+                    "contactInputColor": "",
+                    "contactUlColor": "",
+                    "contactLiColor": "",
+                    "contactLiTxtColor": ""
+                }
+            },
+            "loginPage": {
+            } 
+        }
+    },
+    "userLanguages": {
+        "defaultLanguage": "pt-br",
+        "preferredLanguages": ["en", "pt-br"]
+    },
+    "userFonts": {
+        "mainFont": "standart",
+        "postFont": "standart",
+        "fontImports": []
+    }
+}

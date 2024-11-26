@@ -1,12 +1,27 @@
-class API {
-    token;
-    constructor(token) {
-        this.token = token
+class API extends ENV {
+
+    constructor() {
+        super()
     }
 
+    buttonIsPressed = false;
+    async profileUpdate(a) {
+            const response = await fetch(`${this.url}/users-porfile/a`, {
+                method: "POST",
+                body: JSON.stringify(a),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": ENV.authToken
+                }
+            });
+
+            console.log(await response.json())
+    }
+
+    //https://tcc-u2qf.onrender.com
     async loginRequest(username, password, email) {
         try {
-            const response = await fetch("https://tcc-u2qf.onrender.com/users/login", {
+            const response = await fetch(`${this.url}/users/login`, {
                 method: "POST",
                 body: JSON.stringify({
                     nickname: username,
@@ -15,12 +30,12 @@ class API {
                 }),
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": this.token
+                    "Authorization": ENV.authToken
                 }
             });
-            
+
             if (response.ok) {
-                window.location.href = "../../html/main/home.html";
+                window.location.href = "../../html/home/home.html";
             } else {
                 const data = await response.json();
                 switch (true) {
@@ -61,16 +76,347 @@ class API {
         }
     }
 
+    async registerUser(name, surname, nickname, email, password, confirmPassword) {
+        if (name !== "" && password !== "" && email !== "" && surname !== "" && nickname !== "" && password === confirmPassword) {
+
+            try {
+                const response = await fetch(`${this.url}/users/register`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name,
+                        surname,
+                        email,
+                        password,
+                        nickname
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": ENV.authToken
+                    }
+                });
+
+                const data = await response.json();
+                window.location.href = "../../html/home/home.html";
+                sessionStorage.setItem("userNickname", nickname)
+                sessionStorage.setItem("user", JSON.stringify(data.returnedData))
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                // Lidar com erro na requisição
+            }
+        }
+    }
+
     async findUser(username) {
-        const url = "https://tcc-u2qf.onrender.com/users/" + username
+        const url = `${this.url}/users/` + username
         const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": this.token
+                "Authorization": ENV.authToken
             }
         });
         const data = response.json()
         return data
+    }
+
+    async Post(data) {
+        try {
+            const formData = new FormData();
+            formData.append('title', data.title);
+            formData.append(data.content instanceof File ? 'file' : 'content', data.content);
+            formData.append('userNickname', data.userNickname);
+
+            const response = await fetch(`http://localhost:3000/posts/create`, {
+                method: 'POST',
+                body: formData
+            });
+            const responseData = await response.json();
+
+
+            if (response.ok) {
+                window.alert('Post feito com sucesso')
+                console.log('Post criado com sucesso');
+            } else {
+                window.alert('Ops! parece que estamos com um erro em nossos servidores.\nTente novamente em alguns minutos');
+                console.error('Erro:', responseData);
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async PostFind() {
+        try {
+            const response = await fetch(`http://localhost:3000/posts/get-all`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar posts');
+            }
+            const posts = await response.json();
+
+            return posts;
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async explorePosts() {
+        try {
+            const response = await fetch(`http://localhost:3000/posts/famous/explore`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar posts');
+            }
+            const posts = await response.json();
+
+            return posts;
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async findUniquePost(id) {
+        try {
+            const response = await fetch(`http://localhost:3000/posts/post/${id}`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar post');
+            }
+            const post = await response.json();
+
+
+            return post;
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async PostLike(data, likedPostsData) {
+
+        try {
+
+            if (this.buttonIsPressed === false) {
+
+                /* isso aqui vai dar merda no futuro, mas por hora serve, por gentileza não tocar em nada que envolva este trecho de codigo*/
+                this.buttonIsPressed = true;
+                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
+
+                setTimeout(() => {
+                    this.buttonIsPressed = false
+                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
+                }, 1500)
+
+                const response = await fetch(`http://localhost:3000/posts/likes?type=Post&reqType=like`, {
+                    method: "PATCH",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+
+                /* Atualiza se o post foi marcado com like ou não no backend*/
+                const postLikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=like`, {
+                    method: "PATCH",
+                    body: JSON.stringify(likedPostsData),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                functions.updatePost(data.id)
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar posts');
+                }
+
+                const postLiked = await response.json();
+                return postLiked;
+
+            }
+
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async PostUnlike(data, likedPostsData) {
+        try {
+
+
+            if (this.buttonIsPressed === false) {
+
+                this.buttonIsPressed = true;
+                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
+
+                setTimeout(() => {
+                    this.buttonIsPressed = false
+                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
+                }, 1500)
+
+                const response = await fetch(`http://localhost:3000/posts/likes?type=Post&reqType=unlike`, {
+                    method: "PATCH",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                const postUnlikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=unlike`, {
+                    method: "PATCH",
+                    body: JSON.stringify(likedPostsData),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                functions.updatePost(data.id)
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar posts\n');
+                }
+                const postUnliked = await response.json();
+                return postUnliked;
+            }
+
+        } catch (error) {
+            console.error('Erro na requisição:', error, "\n");
+        }
+    }
+
+    async CommentLike(data, likedPostsData) {
+
+        try {
+
+            if (this.buttonIsPressed === false) {
+
+                /* isso aqui vai dar merda no futuro, mas por hora serve, por gentileza não tocar em nada que envolva este trecho de codigo*/
+                this.buttonIsPressed = true;
+                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
+
+                setTimeout(() => {
+                    this.buttonIsPressed = false
+                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
+                }, 1500)
+
+                const response = await fetch(`http://localhost:3000/posts/likes?type=Comment&reqType=like`, {
+                    method: "PATCH",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+
+                /* Atualiza se o post foi marcado com like ou não no backend*/
+                const postLikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=like`, {
+                    method: "PATCH",
+                    body: JSON.stringify(likedPostsData),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                functions.updatePost(data.id)
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar posts');
+                }
+
+                const postLiked = await response.json();
+                return postLiked;
+
+            }
+
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    }
+
+    async CommentUnlike(data, likedPostsData) {
+        try {
+
+
+            if (this.buttonIsPressed === false) {
+
+                this.buttonIsPressed = true;
+                document.querySelector(`#postInputCheckId${data.id}`).setAttribute("disabled", true)
+
+                setTimeout(() => {
+                    this.buttonIsPressed = false
+                    document.querySelector(`#postInputCheckId${data.id}`).removeAttribute("disabled")
+                }, 1500)
+
+                const response = await fetch(`http://localhost:3000/posts/likes?type=Comment&reqType=unlike`, {
+                    method: "PATCH",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                const postUnlikedTable = await fetch(`http://localhost:3000/posts/likedPosts?type=unlike`, {
+                    method: "PATCH",
+                    body: JSON.stringify(likedPostsData),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                functions.updatePost(data.id)
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar posts\n');
+                }
+                const postUnliked = await response.json();
+                return postUnliked;
+            }
+
+        } catch (error) {
+            console.error('Erro na requisição:', error, "\n");
+        }
+    }
+
+    async findLikedPost(data) {
+        try {
+            const response = await fetch(`${this.url}/posts/likedPosts`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const responseData = await response.json();
+
+            if (responseData.postInfo.booleanValue == true) {
+
+                return true
+            } else {
+
+                return false
+            }
+
+        } catch (error) {
+            console.error('Error in findLikedPost:', error);
+        }
+    }
+
+    async findLikedComment(data) {
+        try {
+            const response = await fetch(`${this.url}/posts/likedCommendtsPosts`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const responseData = await response.json();
+
+            if (responseData.postInfo.booleanValue == true) {
+
+                return true
+            } else {
+
+                return false
+            }
+
+        } catch (error) {
+            console.error('Error in findLikedPost:', error);
+        }
     }
 }

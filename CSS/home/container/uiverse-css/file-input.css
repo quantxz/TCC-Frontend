@@ -1,0 +1,38 @@
+/*custom inpu file*/
+.custom-file-input {
+    color: transparent;
+    position: absolute;
+    left: 0%;
+    bottom: 2rem;
+    left: 19%;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: "▲ Upload File";
+    color: #000000;
+    display: inline-block;
+    background: linear-gradient(45deg, #C1F3E3, #A1C7FA);
+    padding: 10px 22px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    border-radius: 2px;
+    outline: none;
+}
+
+.custom-file-input:focus {
+    outline: none !important;
+
+}
+
+.custom-file-input:active::before {
+    transform: scale(.9) translate(0px, 2px);
+    box-shadow: inset 4px 4px 5px 0px rgba(0, 0, 0, 0.20);
+
+}

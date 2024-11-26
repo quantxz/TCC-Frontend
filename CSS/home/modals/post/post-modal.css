@@ -1,0 +1,204 @@
+.post-modal {
+    position: relative;
+    width: 40%;
+    height: 70%;
+    max-height: 90%;
+    background-color: #fff;
+    border-radius: 7.5px !important;
+    display: none;
+    flex-direction: column;
+}
+
+.post-modal .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 45px;
+    padding: 8px 4%;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.post-modal .modal-header {
+    width: 100%;
+    height: 10%;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 32px;
+    border-bottom: 1px #000 solid;
+    animation: showContent 1.5s forwards;
+}
+
+.post-modal .modal-header ion-icon:not(:first-child) {
+    position: relative;
+    font-size: 45px;
+    left: 20%;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.post-modal .modal-content>form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90% !important;
+    gap: 15px;
+    padding: 8px 4%;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.post-modal .modal-content>form input:not(input[type="submit"]) {
+    width: 70%;
+    min-height: 10%;
+    border: 3px solid #A1C7FA;
+    word-wrap: break-word;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.post-modal .modal-content>form input:focus {
+    border: 2px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 5px #aeeee58a;
+    background-color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.post-modal .modal-content>form input[type="submit"] {
+    border: 1px solid #000;
+}
+
+.do-post-options {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.botao-postar {
+    --font-color: #323232;
+    --bg-color: #fff;
+    --main-color: #A1C7FA;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.botao-postar:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+}
+
+.clear-button {
+    position: absolute;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    right: 5%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 10px #00000018;
+    cursor: pointer;
+    background-color: #d8d2d22a;
+}
+
+.clear-button > .tooltip{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.clear-button > .tooltip > button:hover ~ p {
+    display: block;
+    position: absolute;
+    width: 5rem;
+    height: 100%;
+    top: 3rem;
+    transition: 2s;
+} 
+
+.clear-button > .tooltip > button:hover > svg {
+    transform: translateY(-3px);
+    transition: 0.6s;
+} 
+
+
+.clear-button > .tooltip > svg{
+    filter: blur(10px);
+}
+
+
+#post-modal-active {
+    display: flex !important;
+    animation: modalUp 1s forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-menu {
+    position: relative;
+    top: 0;
+}
+
+#post-modal-menu-image-active {
+    position: relative;
+    top: 5rem !important;
+}
+
+@keyframes modalUp {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+    25% {
+        
+        width: 40%;
+        height: 5%;
+    }
+    60% {
+        width: 40%;
+        height: 60%;
+    }
+    70% {
+        width: 60%;
+        height: 100%;
+    }
+    100% {
+        width: 40%;
+        min-height: 70%;
+    }
+}
+
+@keyframes menuDown {
+    0% {
+        position: relative;
+        top: 0rem;
+    } 100% {
+        position: relative;
+        top: 5rem !important;
+    }
+}

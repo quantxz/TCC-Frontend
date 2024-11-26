@@ -1,6 +1,7 @@
 body {
     background-image: url("../../assets/novooo.png");
     background-size: cover;
+    overflow: hidden;
 }
 
 .title {
@@ -46,6 +47,23 @@ body {
     } 100% {
         height: 55vh;
     }
+}
+
+@keyframes showContent {
+    0%, 50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.input-group, #submit, .lembrarDeMim {
+    animation: showContent 1.5s forwards;
+}
+
+.form-group, #register-submit {
+    animation: showContent 1.5s forwards;
 }
 
 .container {
@@ -113,7 +131,7 @@ form .submit:disabled {
 form .submit:enabled {
     transform: scale(1.09);
     transition: 1s;
-    background-color: rebeccapurple;
+    background-color: rgb(0, 162, 255);
     animation: colorChange 2s infinite alternate;
 }
 

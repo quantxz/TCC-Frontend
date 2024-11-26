@@ -1,0 +1,159 @@
+.Documents-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: fit-content;
+    height: 45px;
+    border: none;
+    padding: 0px 15px;
+    border-radius: 5px;
+    background-color: #7eaae2;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.folderContainer {
+    width: 40px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.fileBack {
+    z-index: 1;
+    width: 80%;
+    height: auto;
+}
+
+.filePage {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    transition: all 0.3s ease-out;
+}
+
+.fileFront {
+    width: 85%;
+    height: auto;
+    position: absolute;
+    z-index: 3;
+    opacity: 0.95;
+    transform-origin: bottom;
+    transition: all 0.3s ease-out;
+}
+
+.text {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.Documents-btn:hover .filePage {
+    transform: translateY(-5px);
+}
+
+.Documents-btn:hover {
+    background-color: #498be2;
+}
+
+.Documents-btn:active {
+    transform: scale(0.95);
+}
+
+.Documents-btn:hover .fileFront {
+    transform: rotateX(30deg);
+}
+
+.button-container {
+    position: relative;
+    display: flex;
+    background-color: #A1C7FA;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+        #81abe2 5px 10px 15px;
+}
+
+.button {
+    outline: 0 !important;
+    border: 0 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353434;
+    margin: 5px;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button p {
+    position: relative;
+    top: -5rem;
+}
+
+.icon {
+    z-index: 2;
+    font-size: 20px;
+}
+
+.tooltip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.tooltip input {
+    position: absolute;
+    width: 15%;
+    opacity: 0;
+    z-index: 9;
+    cursor: pointer !important;
+}
+
+.tooltip p {
+    width: 90%;
+    display: none;
+    text-align: center;
+}
+
+.tooltip .button:hover~p {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    transition: 2s;
+}
+
+.tooltip input:hover~p {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    transition: 2s;
+}
+
+.tooltip input:hover~.button {
+    transform: translateY(-3px);
+}
+
+.tooltip input::-webkit-file-upload-button:hover {
+    cursor: pointer;
+}

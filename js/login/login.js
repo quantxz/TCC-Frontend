@@ -70,10 +70,16 @@ formLogin.addEventListener("submit", async (e) => {
     const emailInput = document.querySelector("#login-email").value;
 
     const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTU2MjM0ODQsImV4cCI6MTcxODMwMTg4NH0.uEQXC_vAF2tMh3hOlyQZ5yxXe5YFLd_0BRSRVlhyiYE"
-
+    
+    const user = JSON.stringify({
+        user: userInput,
+        password: passwordInput,
+        email: emailInput
+    })
     const api = new API(authToken);
 
-    localStorage.setItem("userNickname", userInput)
+    sessionStorage.setItem("userNickname", userInput)
+    sessionStorage.setItem("user", user)
     await api.loginRequest(userInput, passwordInput, emailInput);
 
 });

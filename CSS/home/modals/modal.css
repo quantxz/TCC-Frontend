@@ -1,0 +1,12 @@
+modals {
+    position: absolute;
+    background-color: rgba(65, 65, 65, 0.534);
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}

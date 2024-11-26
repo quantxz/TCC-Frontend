@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5", // ou 'es6', 'es2015', etc.
+        "module": "commonjs", // ou 'es6', 'amd', etc.
+        "lib": ["ES2015", "DOM"],
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "../js/gen", // Diretório de saída para os arquivos compilados
+        "rootDir": "./src"  // Diretório raiz do código-fonte TypeScript
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
