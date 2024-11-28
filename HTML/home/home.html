@@ -26,34 +26,37 @@
 
 <body class="overflow-x-hidden">
     <div class="container">
-        <aside class="sidebar-left">
+        <aside class="sidebar-left bg-zinc-900">
+            <div>
 
+                <h1 class="text-white translate-x-[19px] translate-y-[90px] text-2xl ">CODESAVYY</h1>
+                
+            </div>
             <logo>
-                <img src=" ../../assets/logo-symbol.png" id="Logo_roubado">
+                <img class="translate-x-[13vh] translate-y-[-11vh]" src=" ../../assets/logo-symbol.png" id="Logo_roubado">
             </logo>
             <nav>
 
-                <ul class="translate-x-[4vh] ">
-                    <img src="/assets/icons/casa.png"
-                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh] ">
+                <ul class="translate-x-[4vh] text-white ">
+                    <img src="/assets/icons/casa.png" class="translate-x-[-5vh] w-[25px] translate-y-[3vh] ">
                     <li><a href=" #" class="feed-section-link">Home</a></li>
                     <img src="/assets/icons/sino-de-notificacao-nas-redes-sociais.png"
                         class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="#" class="notifications">Notifications</a></li>
-                    <img src="/assets/icons/bubble-chat (1).png"
-                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
+                    <img src="/assets/icons/bubble-chat (1).png" class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="../chat/chat.html">Messages</a></li>
-                    <img src="/assets/icons/do-utilizador.png"
-                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
+                    <img src="/assets/icons/do-utilizador.png" class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <!-- talvel ? -->
                     <!-- <li><a href="#">Bookmarks</a></li> -->
                     <li><a href="/HTML/perfil/perfil.html">Profile</a></li>
                 </ul>
 
                 <div id="Info-User"
-                    class="w-[24vh] h-[10vh] bg-blue-950 rounded-[10px] translate-y-[13rem] cursor-pointer">
+                    class="w-[24vh] h-[10vh] bg-zinc-700 rounded-[10px] translate-y-[13rem] cursor-pointer">
                     <div id="NickName-Info" class=" absolute left-[12vh] translate-y-[3vh]">
-                        <a href="/HTML/perfil/perfil.html"><h1 class="font-mono text-1xl text-white userNickInCube"></h1></a>
+                        <a href="/HTML/perfil/perfil.html">
+                            <h1 class="font-mono text-1xl text-cyan-300 userNickInCube"></h1>
+                        </a>
                     </div>
                     <div id="imagem-Info">
                     </div>
@@ -63,7 +66,7 @@
 
         </aside>
 
-        <main class="feed ">
+        <main class="feed bg-zinc-950">
             <section class="feed-section" id="feed-section-active">
                 <div class="posts">
                 </div>
@@ -254,7 +257,7 @@
                     </div>
                 </div>
             </section>
-            <div class="do-a-post-container">
+            <div class="do-a-post-container bg-blue-600 translate-x-[-30vh] z-10" >
                 <button class="do-a-post">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-code-square" viewBox="0 0 16 16">
@@ -264,11 +267,11 @@
                             d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0m2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0" />
                     </svg>
                 </button>
-                <p>Fazer um post</p>
+               
             </div>
         </main>
 
-        <aside class="sidebar-right">
+        <aside class="sidebar-right bg-zinc-900">
             <div class="trends">
                 <h2>Os posts mais populares</h2>
                 <ul class="thrend-list">
@@ -310,11 +313,76 @@
                     </li>
                 </ul>
             </div>
+            <div class="w-full max-w-xs mx-auto p-3 bg-zinc-950 text-cyan-300 shadow-md rounded-lg h-[50%]" >
+                <h2 class="text-lg font-bold text-g mb-3">Comunidades</h2>
+                <ul class="space-y-2">
+              
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C1
+                    </div>
+                    <span class="text-sm text-cyan-400">Dev Frontend</span>
+                  </li>
+             
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-green-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C2
+                    </div>
+                    <span class="text-sm text-cyan-400">Backend Masters</span>
+                  </li>
+               
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-purple-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C3
+                    </div>
+                    <span class="text-sm text-cyan-500">Fullstack Heroes</span>
+                  </li>
+                 
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-yellow-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C4
+                    </div>
+                    <span class="text-sm text-cyan-500">Mobile Devs</span>
+                  </li>
+                 
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-red-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C5
+                    </div>
+                    <span class="text-sm text-cyan-500">Senior/pleno</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-950 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C6
+                    </div>
+                    <span class="text-sm text-cyan-500">LoveCss</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-fuchsia-500 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C7
+                    </div>
+                    <span class="text-sm text-cyan-500">GoHorse</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-orange-600 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C8
+                    </div>
+                    <span class="text-sm text-cyan-500">NoCodeKing</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-violet-800 text-white flex items-center justify-center rounded-full text-sm font-bold">
+                      C9
+                    </div>
+                    <span class="text-sm text-cyan-500">Cibernatic</span>
+                  </li>
+                </ul>
+              </div>
+              
         </aside>
     </div>
 
     <modals class="modals">
-        <div class="notifications-modal modal">
+        <div class="notifications-modal modal bg-zinc-900 text-white">
             <div class="modal-header">
                 <p>Notificações</p>
                 <ion-icon name="close-outline" id="close-modal"></ion-icon>
@@ -325,7 +393,8 @@
                 </ul>
             </div><!--fechamento modal-content-->
         </div>
-        <div class="post-modal modal">
+        <div class="post-modal modal bg-zinc-900 text-white
+        ">
             <div class="modal-header">
                 <p>Faça um post</p>
                 <ion-icon name="close-outline" id="close-modal"></ion-icon>
