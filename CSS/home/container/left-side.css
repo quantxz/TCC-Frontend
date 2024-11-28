@@ -4,12 +4,13 @@
 
 logo {
     display: flex;
-    position: relative;
     width: 15vw;
     height: 25vh;
     z-index: 100;
     align-items: center;
     justify-content: center;
+    transform: scale(0.6);
+    
 }
 
 logo img {
@@ -100,7 +101,7 @@ nav ul li a {
 }
 
 #imagem-Info {
-    background-image: url(/assets/negao\ sorrindo.jpg);
+    background-image: url(../);
     background-size: cover;
     border-radius: 50%;
     width: 40%;
@@ -109,3 +110,34 @@ nav ul li a {
     margin: 5px;
 
 }
+
+#Logo_roubado{
+
+translate: -7vh;
+animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(0.6); 
+      opacity: 2; 
+    }
+    50% {
+      transform: scale(0.7); 
+      opacity: 0.7; 
+    }
+    100% {
+      transform: scale(0.6); 
+      opacity: 1; 
+    }
+  }
+
+  li:hover{
+    transition: 0.5s;
+        color: aqua;
+    transform: scale(1.1);
+
+
+
+  }
+  

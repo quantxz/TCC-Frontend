@@ -26,34 +26,34 @@
 
 <body class="overflow-x-hidden">
     <div class="container">
-        <aside class="sidebar-left">
+        <aside class="sidebar-left bg-zinc-900">
 
             <logo>
-                <img src=" ../../assets/logo-symbol.png" id="Logo_roubado">
+                <h1 class="text-white text-[5vh] font-thin">CODESAVVY</h1>
+                <img src="../../assets/logo-symbol.png" id="Logo_roubado">
             </logo>
             <nav>
 
-                <ul class="translate-x-[4vh] ">
-                    <img src="/assets/icons/casa.png"
-                        class="translate-x-[-5vh] w-[25px] translate-y-[3vh] ">
+                <ul class="translate-x-[4vh] text-white">
+                    <img src="../../assets/icons/casa.png" class="translate-x-[-5vh] w-[25px] translate-y-[3vh] ">
                     <li><a href=" #" class="feed-section-link">Home</a></li>
-                    <img src="/assets/icons/sino-de-notificacao-nas-redes-sociais.png"
+                    <img src="../../assets/icons/sino-de-notificacao-nas-redes-sociais.png"
                         class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="#" class="notifications">Notifications</a></li>
-                    <img src="/assets/icons/bubble-chat (1).png"
+                    <img src="../../assets/icons/bubble-chat (1).png"
                         class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <li><a href="../chat/chat.html">Messages</a></li>
-                    <img src="/assets/icons/do-utilizador.png"
+                    <img src="../../assets/icons/do-utilizador.png"
                         class="translate-x-[-5vh] w-[25px] translate-y-[3vh]">
                     <!-- talvel ? -->
                     <!-- <li><a href="#">Bookmarks</a></li> -->
-                    <li><a href="/HTML/perfil/perfil.html">Profile</a></li>
+                    <li><a href="../../HTML/perfil/perfil.html">Profile</a></li>
                 </ul>
 
                 <div id="Info-User"
-                    class="w-[24vh] h-[10vh] bg-blue-950 rounded-[10px] translate-y-[13rem] cursor-pointer">
+                    class="w-[25vh] h-[10vh] bg-zinc-950 rounded-[10px] translate-y-[13rem] cursor-pointer ">
                     <div id="NickName-Info" class=" absolute left-[12vh] translate-y-[3vh]">
-                        <h1 class="font-mono text-1xl text-white userNickInCube"></h1>
+                        <h1 class="font-mono text-1xl text-cyan-300 userNickInCube">ola mundo</h1>
                     </div>
                     <div id="imagem-Info">
                     </div>
@@ -63,12 +63,12 @@
 
         </aside>
 
-        <main class="feed ">
+        <main class="feed bg-zinc-950">
             <section class="feed-section" id="feed-section-active">
                 <div class="posts">
                 </div>
                 <div class="post-focus">
-                    /* From Uiverse.io by AKAspidey01 */ 
+                    /* From Uiverse.io by AKAspidey01 */
                     <div class="post-comments">
                         <ul class="postCommentsUnorderList">
 
@@ -255,8 +255,8 @@
                     </div>
                 </div>
             </section>
-            <div class="do-a-post-container">
-                <button class="do-a-post">
+            <div class="do-a-post-container bg-cyan-800 translate-x-[-30vh]  ">
+                <button class="do-a-post w-[30%]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-code-square" viewBox="0 0 16 16">
                         <path
@@ -265,12 +265,20 @@
                             d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0m2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0" />
                     </svg>
                 </button>
-                <p>Fazer um post</p>
+              
             </div>
         </main>
 
-        <aside class="sidebar-right">
-            <div class="trends">
+        
+        <aside class="sidebar-right bg-zinc-900">
+            <div id="Button-Menu-Left">
+                
+                <img src="../../assets/seta-para-baixo.png" class="scale-[-0.1] translate-y-[-27vh] translate-x-[-27vh] cursor-pointer absolute">
+    
+    
+    
+            </div>
+            <div class="trends translate-y-[-10px]">
                 <h2>Os posts mais populares</h2>
                 <ul class="thrend-list">
                     <li>
@@ -312,10 +320,59 @@
                 </ul>
             </div>
         </aside>
+
+
+
+        <div id="Comunidades" class="w-[15%] h-[48%] bg-cyan-800 absolute rounded-[5px] translate-x-[103rem] translate-y-[50vh] gap-28">
+            <div id="Name-Apresetation" class="text-white translate-x-[8VH] my-4" >
+                COMUNIDADES
+            </div>
+       
+                <ul id="Comunidade-list" class="text-cyan-300 inline-block cursor-pointer bg-zinc-900 w-[100%]">
+                    <div id="Comunidade-1 " class="flex row-span-5 my-3 gap-2">
+                        <img src="../../assets/Dev-Full-Stack.png" class="rounded-[50%] w-[50px] h-[50px] gap-2  ">
+                        <h2>#Back-End</h2>
+
+                    </div>
+                    <div id="Comunidade-Info" class="flex row-span-5 my-3  gap-2">
+                        <img src="../../assets/front-end.png" class="rounded-[50%] w-[50px] h-[50px] gap-2 ">
+                        <h2>#Front-end</h2>
+
+                    </div>
+                    <div id="Comunidade-Info" class="flex row-span-5 my-3  gap-2">
+                        <img src="../../assets/codes.jpg" class="rounded-[50%] w-[50px] h-[50px]   gap-2">
+                        <h2>#Fulstack</h2>
+
+                    </div>
+                    <div id="Comunidade-Info" class="flex row-span-5 my-3  gap-2">
+                        <img src="../../assets/codes2.jpg" class="rounded-[50%] w-[50px] h-[50px]  gap-2 ">
+                        <h2>#Amamosnode</h2>
+                       
+
+                    </div>
+                    <div id="Comunidade-Info" class="flex row-span-5 my-3  gap-2">
+                        <img src="../../assets/sennior.jpg" class="rounded-[50%] w-[50px] h-[50px] gap-2 ">
+                        <h2>#Senior/pleno</h2>
+
+                    </div>  
+                    <div id="Comunidade-Info" class="flex row-span-5 my-3  gap-2">
+                        <img src="../../assets/kids.png" class="rounded-[50%] w-[50px] h-[50px]  gap-2 ">
+                        <h2>#KIDSoncode</h2>
+
+                    </div>
+                    
+                </ul>
+
+
+
+        </div>
+
+
+
     </div>
 
     <modals class="modals">
-        <div class="notifications-modal modal">
+        <div class="notifications-modal modal bg-zinc-900 text-white">
             <div class="modal-header">
                 <p>Notificações</p>
                 <ion-icon name="close-outline" id="close-modal"></ion-icon>
@@ -326,7 +383,7 @@
                 </ul>
             </div><!--fechamento modal-content-->
         </div>
-        <div class="post-modal modal">
+        <div class="post-modal modal bg-zinc-900 text-white">
             <div class="modal-header">
                 <p>Faça um post</p>
                 <ion-icon name="close-outline" id="close-modal"></ion-icon>
@@ -340,7 +397,7 @@
                     <input type="submit" value="Postar" class="botao-postar">
                 </form>
                 <div class="do-post-options">
-                    <div class="menu post-menu">
+                    <div class="menu post-menu ">
                         <div class="button-container">
                             <div class="tooltip">
                                 <input type="checkbox" class="just-friends-checkbox">

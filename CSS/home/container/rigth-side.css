@@ -9,6 +9,8 @@
     animation: sidebarPull 1s forwards;
 }
 
+
+
 @keyframes sidebarPull {
     0% {
         top: -50rem;
