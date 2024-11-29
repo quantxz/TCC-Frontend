@@ -45,8 +45,14 @@ function initSocket(room) {
 let socket = initSocket(room);
 
 async function render(data) {
-    console.trace('Render function called from:'); 
-    const response = await api.findUser(data.author)
+    console.trace('Render function called from:');
+    // Verifica se a mensagem já foi renderizada
+    if (currentMessages.some(msg => msg.content === data.content && msg.author === data.author && msg.hour === data.hour)) {
+        return;
+    }
+    currentMessages.push(data);
+    // Continuação da renderização normal
+    const response = await api.findUser(data.author);
     const message = document.createElement("div");
     message.className = "message";
 
@@ -64,12 +70,11 @@ async function render(data) {
     profileInChatPic.className = "profileInChatPic";
     profileInChatPic.style = `background-image: url(${response.returnedData.profilePic});`;
 
-
     const nicknameElement = document.createElement("p");
     nicknameElement.className = "userInChatName";
     nicknameElement.innerText = data.author;
 
-    if (JSON.stringify(data.author) === JSON.stringify(nick)) {
+    if (data.author === nickname) {
         message.id = "myMessage";
     }
 
@@ -96,22 +101,25 @@ form.addEventListener("submit", (e) => {
     const minutes = currentDate.getMinutes();
     const seconds = currentDate.getSeconds();
 
-    socket.emit("message", {
-        author: nickname,
-        room: room,
-        content: messageInput.value,
-        hour: `${hours}:${minutes}:${seconds}`
-    });
-
-    const messageToArray = {
+    const messageData = {
         author: nickname,
         room: room,
         content: messageInput.value,
         hour: `${hours}:${minutes}:${seconds}`
     };
 
-    currentMessages.push(messageToArray)
+    // Envia a mensagem
+    socket.emit("message", messageData);
+
+    // Adiciona a mensagem à lista local de mensagens
+
+    // Renderiza a mensagem sem esperar pelo servidor
+    render(messageData);
+
+    // Limpa o campo de entrada
+    messageInput.value = "";
 });
+
 
 contacts.forEach(contact => {
     console.log(room);
@@ -123,13 +131,13 @@ contacts.forEach(contact => {
         if (contact.id === "chatSelected") {
             contact.removeAttribute("id");
             socket.emit("leaveRoom", { room });
-
+            document.getElementById("messageInput").value = ""
             socket.disconnect();
+            currentMessages = []
         } else {
             contact.id = "chatSelected";
             messagesLoade = false; // Garantir que a flag seja resetada
         }
-
         // Atualiza a variável "room" para a nova sala
         room = newRoom;
 
