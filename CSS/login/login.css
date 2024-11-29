@@ -1,7 +1,9 @@
 body {
-    background-image: url("../../assets/novooo.png");
+    background-image: url(../../assets/virarwalpepar.avif);
     background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
+    color: #20c997;
 }
 
 .title {
@@ -29,10 +31,14 @@ body {
     0% {
         width: 0vw;
         height: 0vh;
-    } 25% {
+    }
+
+    25% {
         width: 25vw;
         height: 5vh;
-    } 100% {
+    }
+
+    100% {
         height: 75vh;
     }
 }
@@ -41,28 +47,38 @@ body {
     0% {
         width: 0vw;
         height: 0vh;
-    } 25% {
+    }
+
+    25% {
         width: 20vw;
         height: 5vh;
-    } 100% {
+    }
+
+    100% {
         height: 55vh;
     }
 }
 
 @keyframes showContent {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 }
 
-.input-group, #submit, .lembrarDeMim {
+.input-group,
+#submit,
+.lembrarDeMim {
     animation: showContent 1.5s forwards;
 }
 
-.form-group, #register-submit {
+.form-group,
+#register-submit {
     animation: showContent 1.5s forwards;
 }
 
@@ -228,23 +244,30 @@ height: 55vh; */
 
 @keyframes logAnim {
     0% {
-        display: none; /* Escondido */
-    } 
+        display: none;
+        /* Escondido */
+    }
+
     24.9% {
-        display: none; /* Escondido */
+        display: none;
+        /* Escondido */
         width: 0vw;
         height: 0vw;
-    } 
+    }
+
     25% {
-        display: flex !important; /* Exibido */
+        display: flex !important;
+        /* Exibido */
         width: 0vw;
         height: 0vw;
-    } 
+    }
+
     50% {
         width: 20vw;
         height: 3vh;
         content: none;
-    } 
+    }
+
     100% {
         height: 55vh;
     }

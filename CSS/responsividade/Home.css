@@ -1,14 +1,15 @@
-@media (min-width: 1366px) and (max-width: 1390px) {
+@media (min-width: 1360px) and (max-width: 1900px) {
     body {
         transition: 1.5s;
-        background-color: rgb(0, 12, 29);
-        overflow-x: hidden;
+        background-color: rgb(36, 40, 41);
+        overflow: hidden;
     }
 
     .feed {
         position: relative;
         width: 100%;
         padding: 20px;
+        height: 100%;
         box-sizing: border-box;
         background-color: var(--bg-home-color);
         border-left: 1px solid #ccc;
@@ -17,17 +18,35 @@
     }
 
     .sidebar-right {
-        transform: translateY(-3vh);
+
+        transform: translateY(-7vh);
         font-size: 1.90vh;
+        height: 100vh;
+
 
     }
 
-    .who-to-follow {
-        position: relative;
-        top: 2rem;
-        left: 1vh;
+    #Comunidades {
+        background-color: rgb(24, 112, 112);
+        transform: translateY(53vh);
+        translate: 186vh;
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 0px;
+        width: 16%;
+        animation: transitionAbusada2 1s ease-in-out;
 
     }
+
+    #Comunidade-list {
+        background-color: rgb(65, 65, 65);
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+
 
     nav {
         transform: translateY(-7rem);
@@ -43,223 +62,288 @@
         transform: translateX(-6rem);
 
     }
-    
-}
 
+    img {
 
-@media (min-width: 1920px) and (max-width: 1040px) {
-    body {
-        transition: 1.2s;
-        background-color: #010c1d;
-        overflow-x: hidden;
-    }
-
-    .feed {
-        position: relative;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        background-color: var(--bg-home-color);
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        overflow-y: auto;
-    }
-
-    .sidebar-right {
-        transform: translateY(-3vh);
-        font-size: 1.90vh;
-
-    }
-
-    .who-to-follow {
-        position: relative;
-        top: 2rem;
-        left: 1vh;
-
-    }
-
-    nav {
-        transform: translateY(-7rem);
-    }
-
-    #Info-User {
-        transform: translateY(5vh);
-
-    }
-
-    #Logo_roubado {
-        width: 100%;
-        transform: translateX(-2rem);
-
-    }
-
-    .do-a-post-container {
-
-        width: 4%;
-
-    }
-
-    .sidebar-right {
-
-        display: block;
-
-    }
-
-    .who-to-follow {
-        position: relative;
-        top: 4rem;
-        left: -5vh;
-        display: block;
-
-    }
-   
-}
-
-
-
-@media (min-width: 1280px) and (max-width:1290px) {
-    body {
-        transition: 1.2s;
-        background-color: rgb(0, 12, 29);
-        overflow-x: hidden;
-    }
-
-    .feed {
-        position: relative;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        background-color: var(--bg-home-color);
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        overflow-y: auto;
-    }
-
-    .sidebar-right {
         transform: translateY(-1vh);
-        font-size: 1.80vh;
-
     }
 
-    .who-to-follow {
-        position: relative;
-        top: 4rem;
-        left: 1vh;
 
-    }
-
-    nav {
-        transform: translateY(-7rem);
-    }
-
-    #Info-User {
-        transform: translateY(5vh);
-
-    }
-
-    #Logo_roubado {
-        width: 100%;
-        transform: translateX(-2rem);
-
-    }
-   
-}
-
-@media (min-width: 768px) and (max-width:1024px) {
-
-    body {
-        transition: 1.2s;
-        background-color: #010c1d;
-        overflow-x: hidden;
-    }
-
-    .feed {
-        position: relative;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        background-color: var(--bg-home-color);
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        overflow-y: auto;
-    }
-
-    .sidebar-right {
-        transform: translateY(-1vh);
-        font-size: 1.80vh;
-
-    }
-
-    .who-to-follow {
-        position: relative;
-        top: 4rem;
-        left: -5vh;
-        display: none;
-
-    }
-
-    .sidebar-right {
-
-        display: none;
-
-    }
-
-    .do-a-post-container {
-
-        width: 10%;
-
-    }
-
-    nav {
-
-
-        transform: translateY(-7rem);
-    }
-
-    #Info-User {
-        position: relative;
-        left: -1vh;
-        transform: translateY(15vh);
-
-
-
-
-    }
-
-    #Logo_roubado {
-        width: 100%;
-        transform: translateX(-4rem);
-
-    }
 
     .sidebar-left {
-
-        width: 33%;
-    }
-
-    .modal-header {
-
-        width: 120%;
-
-
+        display: none;
+        animation: transitionAbusada 0.5s ease-in-out;
 
     }
 
-    .post {
-
-        height: 100%;
-
-    }
-
-    .post-header {
-        margin-top: 10px;
-        margin-bottom: 10px;
+    .hamburger {
+        z-index: 10;
+        transform: translateX(-10vh);
 
     }
 
+    #Menu-See-User {
+        display: flex;
+        z-index: 10;
 
-   
+    }
+
+    #Info-User {
+        transform: translateY(10vh);
+        translate: -2vh;
+    }
+
 
 
 }
 
+
+@media (min-width: 1100px) and (max-width: 1359px) {
+    body {
+        transition: 1.5s;
+        background-color: rgb(36, 40, 41);
+        overflow: hidden;
+    }
+
+    .sidebar-right {
+
+        transform: translateY(-7vh);
+        font-size: 1.90vh;
+        height: 100vh;
+
+
+    }
+
+    .feed {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: var(--bg-home-color);
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+    }
+
+
+    .sidebar-left {
+        display: none;
+        animation: transitionAbusada 0.5s ease-in-out;
+
+    }
+
+    .hamburger {
+        z-index: 10;
+        transform: translateX(-10vh);
+
+    }
+
+    #Comunidades {
+        background-color: rgb(24, 112, 112);
+        transform: translateY(53vh);
+        translate: 186vh;
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 10px;
+        width: 16%;
+        animation: transitionAbusada2 1s ease-in-out;
+
+    }
+
+    #Comunidade-list {
+        background-color: rgb(65, 65, 65);
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+    img {
+
+        transform: translateY(-1vh);
+    }
+}
+
+
+
+@media (min-width: 768px) and (max-width:1099px) {
+    body {
+        transition: 1.5s;
+        background-color: rgb(36, 40, 41);
+        overflow: hidden;
+    }
+
+    .sidebar-right {
+
+        transform: translateY(-10vh);
+        font-size: 1.90vh;
+        height: 100vh;
+
+
+    }
+
+    .feed {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: var(--bg-home-color);
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+    }
+
+
+    .sidebar-left {
+        display: none;
+        animation: transitionAbusada 0.5s ease-in-out;
+
+    }
+
+    .hamburger {
+        z-index: 10;
+        transform: translateX(-10vh);
+
+    }
+
+    #Comunidades {
+        background-color: rgb(24, 112, 112);
+        transform: translateY(53vh);
+
+        translate: 186vh;
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 10px;
+        width: 16%;
+        animation: transitionAbusada2 1s ease-in-out;
+
+    }
+
+    #Comunidade-list {
+        background-color: rgb(65, 65, 65);
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+    img {
+
+        transform: translateY(-1vh);
+    }
+
+    #icon-Modfication {
+        position: relative;
+        top: 5vh;
+        transform: translateX(-8vh);
+    }
+
+    nav {
+        transform: translateY(-04rem);
+    }
+
+    #Text-config {
+
+        translate: 1rem;
+    }
+
+    .button-container {
+
+        transform: translateY(8vh);
+    }
+}
+
+@media (min-width: 400px) and (max-width: 960px) {
+    body {
+        transition: 1.5s;
+        background-color: rgb(36, 40, 41);
+        overflow: hidden;
+    }
+
+    .sidebar-right {
+
+        transform: translateY(-10vh);
+        font-size: 1.90vh;
+        height: 100vh;
+        width: 13%;
+
+
+    }
+
+    .feed {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: var(--bg-home-color);
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+    }
+
+
+    .sidebar-left {
+        display: none;
+        animation: transitionAbusada 0.5s ease-in-out;
+
+    }
+
+    .hamburger {
+        z-index: 10;
+        transform: translateX(-14vh);
+
+    }
+
+    #Comunidades {
+        background-color: rgb(24, 112, 112);
+        position: absolute;
+        top: 8rem;
+        transform: scale(0.5);
+        translate: 182vh;
+        overflow: scroll;
+        overflow-x: hidden;
+        border-radius: 10px;
+        width: 25%;
+
+        height: 100%;
+        animation: transitionAbusada2 1s ease-in-out;
+
+    }
+
+    #Comunidade-list {
+        margin: 1vh;
+        background-color: rgb(65, 65, 65);
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+    img {
+
+        transform: translateY(-1vh);
+    }
+
+    #icon-Modfication {
+        position: relative;
+        top: 5vh;
+        transform: translateX(-8vh);
+    }
+
+    nav {
+        transform: translateY(-04rem);
+    }
+
+    #Text-config {
+
+        translate: 1rem;
+    }
+
+    .button-container {
+
+        transform: translateY(8vh);
+    }
+}

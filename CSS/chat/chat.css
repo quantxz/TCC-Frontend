@@ -13,6 +13,7 @@ body {
     background-color: var(--Main-Color-Light);
     width: 5rem;
     height: 100vh;
+    background-color: #424242;
 }
 
 .options>.profilePic {
@@ -28,6 +29,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
 }
 
 .options>.profilePic img {
@@ -59,7 +61,7 @@ body {
     color: rgba(32, 32, 32, 0.822);
 }
 
-.options>.pagesOptions ul li a{
+.options>.pagesOptions ul li a {
     color: rgba(32, 32, 32, 0.822);
 }
 
@@ -76,7 +78,7 @@ body {
     font-size: 35px;
     top: 10%;
     cursor: pointer;
-    color: rgba(32, 32, 32, 0.932);
+    color: rgba(0, 0, 0, 0.932);
 }
 
 main {
@@ -86,11 +88,12 @@ main {
     height: 100vh;
     width: 100%;
     left: 5rem;
+    background-color: #181818;
 }
 
 main>.groups {
     position: relative;
-    background-color: #6877721a;
+    background-color: #7a7a7a1a;
     width: 27vw;
     height: 100vh;
     align-items: center;
@@ -742,4 +745,8 @@ main>.chat>.chatForm>.input {
 .hamburger input:checked+svg .line-top-bottom {
     stroke-dasharray: 20 300;
     stroke-dashoffset: -32.42;
+}
+
+.groups {
+    background-color: #c0c0c0;
 }
