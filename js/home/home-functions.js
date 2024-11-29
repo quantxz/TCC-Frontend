@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             
             input.addEventListener('change', (e) => {
                 const postElement = e.target.closest('.post'); // Encontra o elemento pai com a classe 'post'
+                console.log(postElement.querySelector('.title'))
                 const title = postElement.querySelector('.title').textContent; // Recupera o título do post
                 const postContentContainer = postElement.querySelector('.post-content');
                 let content;

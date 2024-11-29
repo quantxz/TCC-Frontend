@@ -29,7 +29,7 @@ doPosts.addEventListener("click", () => {
     document.querySelector(".post-modal").id = "post-modal-active"
 })
 
-closeModal.forEach(item => {       
+closeModal.forEach(item => {
     item.addEventListener("click", () => {
         document.querySelector(".modals").style.display = "none"
         document.querySelectorAll(".modal").forEach(item => {
@@ -40,13 +40,6 @@ closeModal.forEach(item => {
 
 const feedSection = document.querySelector(".feed-section-link");
 
-
-feedSection.addEventListener("click", () => {
-    document.querySelector(".feed-section").style.display = "block"
-    document.querySelector(".explore-section").style.display = "none"
-    document.querySelector(".sidebar-right").id = ""
-})
-
 /*posts*/
 const clearButton = document.querySelector(".clear-button");
 const contentInput = document.querySelector("#input-modal-post-content");
@@ -54,14 +47,14 @@ const postMenu = document.querySelector(".post-menu");
 const fileInput = document.getElementById('file-input');
 
 
-document.getElementById('file-input').addEventListener('change', function(event) {
+document.getElementById('file-input').addEventListener('change', function (event) {
     const file = event.target.files[0];
 
 
     if (file) {
         const reader = new FileReader();
-        
-        reader.onload = function(e) {
+
+        reader.onload = function (e) {
             contentInput.style.backgroundImage = `url(${e.target.result})`;
             contentInput.style.backgroundSize = 'cover'; // Ajusta o tamanho da imagem para cobrir o input
             contentInput.style.backgroundPosition = 'center'; // Centraliza a imagem
@@ -94,11 +87,11 @@ document.querySelector(".closeCommentModal").addEventListener("click", () => {
 
 let selectedFile = null; // Variável para armazenar o arquivo selecionado
 
-document.getElementById('fileInput').addEventListener('change', function(event) {
+document.getElementById('fileInput').addEventListener('change', function (event) {
     selectedFile = event.target.files[0]; // Armazena o arquivo na variável
     if (selectedFile) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             // Cria uma nova imagem
             const img = document.createElement('img');
             img.src = e.target.result;
@@ -130,6 +123,6 @@ document.querySelector(".commentSubmitInput").addEventListener("click", async ()
         author: UserNick,
         file: selectedFile, // Adiciona o arquivo selecionado ao objeto data
     };
-
+    document.querySelector(".comment-modal-container").id = ""
     await CommentFuncs.doComment(data);
 });

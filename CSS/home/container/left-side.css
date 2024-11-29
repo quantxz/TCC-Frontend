@@ -129,18 +129,5 @@ nav ul li a {
     }
   }
   
-  /* Estilo do elemento com a animação */
-  
-    
- 
-  li:hover{
-    transition: 0.5s;
-    transform: scale(1.1);
-    color: aqua;
 
-
-
-
-  }
-  
  
