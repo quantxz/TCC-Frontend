@@ -16,10 +16,11 @@ const api = new API();
 
 api.findUser(nickname)
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await api.findUser(nickname) 
+    const response = await api.findUser(nickname)
     console.log(response.returnedData)
     document.querySelector(".profilePic").style = `background-image: url(${response.returnedData.profilePic !== "" ? response.returnedData.profilePic : "/assets/6326055-removebg-preview.png"});`
 })
+let lastMessage = null;
 let currentMessages = [];
 let messagesLoade = false;
 let selectedChat = false;
@@ -43,8 +44,9 @@ function initSocket(room) {
 
 let socket = initSocket(room);
 
-function render(data) {
-
+async function render(data) {
+    console.trace('Render function called from:'); 
+    const response = await api.findUser(data.author)
     const message = document.createElement("div");
     message.className = "message";
 
@@ -60,7 +62,8 @@ function render(data) {
 
     const profileInChatPic = document.createElement("div");
     profileInChatPic.className = "profileInChatPic";
-    profileInChatPic.style = "background-image: url(https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg);";
+    profileInChatPic.style = `background-image: url(${response.returnedData.profilePic});`;
+
 
     const nicknameElement = document.createElement("p");
     nicknameElement.className = "userInChatName";
@@ -111,55 +114,61 @@ form.addEventListener("submit", (e) => {
 });
 
 contacts.forEach(contact => {
-    removeSelectedFromOthers(contact);
-    console.log(room)
+    console.log(room);
     contact.addEventListener("click", async (e) => {
+        // Garantir que o novo "room" seja obtido
+        const newRoom = contact.getAttribute("room");
 
-            const newRoom = contact.getAttribute("room");
-            contact.id = "chatSelected";
-            // removeSelectedFromOthers(contact);
-    
-    
-            // Atualiza a room
-            room = newRoom;
+        // Verifica se o contato já está selecionado
+        if (contact.id === "chatSelected") {
+            contact.removeAttribute("id");
+            socket.emit("leaveRoom", { room });
 
-            // Emite evento para o servidor informando a mudança de sala
-            socket.emit("leaveRoom", { room }); // Emissão para o servidor, se necessário
-
-            // Fecha a conexão do socket atual
             socket.disconnect();
+        } else {
+            contact.id = "chatSelected";
+            messagesLoade = false; // Garantir que a flag seja resetada
+        }
 
-            // Inicializa um novo socket com a nova sala
-            socket = initSocket(room);
+        // Atualiza a variável "room" para a nova sala
+        room = newRoom;
 
-            // Atualiza a URL
-            const baseUrl = window.location.origin + window.location.pathname;
-            let params = new URLSearchParams();
-            params.append("room", room);
-            window.history.replaceState({}, '', baseUrl + '?' + params.toString());
+        // Inicializa um novo socket com a nova sala
+        socket = initSocket(room);
 
-            // Limpa as mensagens anteriores
-            messagesDiv.innerHTML = '';
-            socket.emit("find_messages", room)
+        // Atualiza a URL com a nova sala
+        const baseUrl = window.location.origin + window.location.pathname;
+        let params = new URLSearchParams();
+        params.append("room", room);
+        window.history.replaceState({}, '', baseUrl + '?' + params.toString());
 
-            console.log(messagesLoade)
+        // Limpa as mensagens anteriores
+        messagesDiv.innerHTML = '';
 
-            socket.on('all_messages', (messages) => {
-                for (const message of messages) {
-                    if (messagesLoade == false) {
-                        render(message)
-                    }
+        // Solicita as mensagens anteriores para a nova sala
+        socket.emit("find_messages", room);
+
+        // Carrega as mensagens assim que estiverem disponíveis
+        socket.on('all_messages', (messages) => {
+            for (const message of messages) {
+                if (!messagesLoade) {
+                    render(message);
                 }
-                for (const message of currentMessages) {
-                    if (messagesLoade == false) {
-                        render(message)
-                    }
+            }
+            for (const message of currentMessages) {
+                if (!messagesLoade) {
+                    render(message);
                 }
-                messagesLoade = true;
-            });
+            }
+            messagesLoade = true;
+        });
+
+
     });
-
 });
+
+
+
 
 check.addEventListener("change", () => {
     if (check.checked) {

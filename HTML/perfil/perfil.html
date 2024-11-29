@@ -26,7 +26,7 @@
             <input type="text" id="HAB3" placeholder="Digite sua terceira habilidade"><br>
 
             <!-- Contêiner de pré-visualização da imagem -->
-            <div id="imgPreviewContainer" style="display: none; margin-top: 10px;">
+            <div id="imgPreviewContainer">
                 <img id="imgPreview" src="" alt="Pré-visualização">
             </div>
 
@@ -51,7 +51,6 @@
                 <p class="UsernameTXT">@</p>
                 <p class="BioTXT"></p>
                 <button id="EditarPerfil">Editar Perfil</button>
-                <button id="EditarPortifolio">Editar Portifolio</button>
             </div>
         </header>
         <section class="profile-skills">
@@ -84,7 +83,7 @@
 
                 document.getElementById("Name").value = user.name;
                 document.querySelector(".UsernameTXT").innerHTML = "@" + user.nickname;
-                document.getElementById("Bio").value = user.bio;
+                document.querySelector(".BioTXT").innerHTML = user.bio;
 
                 const skillsArray = user.skills ? user.skills.split(',') : [];
                 const skillFields = ["habilidade1", "habilidade2", "habilidade3"];

@@ -10,7 +10,7 @@ body {
 
 .options {
     position: absolute;
-    background-color: var(--Main-Color-Light);
+    background-color: rgb(34 211 238);
     width: 5rem;
     height: 100vh;
 }
@@ -90,7 +90,7 @@ main {
 
 main>.groups {
     position: relative;
-    background-color: #6877721a;
+    background-color: rgb(24 24 27);
     width: 27vw;
     height: 100vh;
     align-items: center;
@@ -253,9 +253,10 @@ main>.groups>.groupsAndChats>.groupsList ul li>.infos>.infosCard>.userInfos>.las
 
 main>.chat {
     position: relative;
+    background-color: rgb(9 9 11);
     right: 0;
     top: 0;
-    width: 55%;
+    width: 60%;
     height: 100vh;
     display: flex;
     justify-content: center;
